@@ -1,7 +1,6 @@
-import Home from './Pages/Home/Home';
-import { ThemeProvider } from '@mui/material/styles';
-import { theme } from './Theme/Theme';
-
+import Home from "./Pages/Home/Home";
+import { ThemeProvider } from "@mui/material/styles";
+import { theme } from "./Theme/Theme";
 
 function App() {
   return (

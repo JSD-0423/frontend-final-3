@@ -1,13 +1,13 @@
-import React from 'react'
-import './Home.css';
-import { Button } from '@mui/material';
+import React from "react";
+import "./Home.css";
+import { Button } from "@mui/material";
 
 function Home() {
   return (
-    <div >
-      <Button color='error'> click me</Button>
+    <div>
+      <Button color="error"> click me</Button>
     </div>
-  )
+  );
 }
 
-export default Home
+export default Home;
