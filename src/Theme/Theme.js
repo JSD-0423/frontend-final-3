@@ -38,7 +38,7 @@ export const theme = createTheme({
       main: "#171520",
     },
     lowEmphasis: {
-      main: "E626262",
+      main: "#E62626",
     },
   },
 });
