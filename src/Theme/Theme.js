@@ -42,7 +42,7 @@ export const theme = createTheme({
       main: "#171520",
     },
     lowEmphasis: {
-      main: "#E62626",
+      main: "#626262",
     },
   },
 });
