@@ -1,10 +1,9 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 import { Search, SearchIconWrapper, StyledInputBase } from './StyledInputWithIcon';
 
-
-// eslint-disable-next-line react/prop-types
-export function InputWithIcon({placeholder}) {
+export const InputWithIcon=({placeholder})=> {
     return (
         <Search sx={{
             display:{
@@ -22,3 +21,12 @@ export function InputWithIcon({placeholder}) {
       </Search>
     )
 }
+InputWithIcon.propTypes ={
+  placeholder: PropTypes.string.isRequired,
+
+}
+
+InputWithIcon.defaultProps = {
+  placeholder: 'Search Products or Brands...',
+
+};

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import {
   Box,
@@ -9,15 +10,15 @@ import {
   Menu,
   MenuItem,
 } from '@mui/material';
-import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import SearchIcon from '@mui/icons-material/Search';
 import MenuIcon from '@mui/icons-material/Menu';
 import { InputWithIcon } from '../InputWithIcon/InputWithIcon';
-
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 const dummyCategories = ['HandBags', 'Watches', 'Skincare', 'Jewllery', 'Apparels'];
 
-// eslint-disable-next-line react/prop-types, no-unused-vars
-export default function Header({ searchPlaceHolder, categories }) {
+
+
+export const Header = ({  categories }) => {
   const [anchorElNav, setAnchorElNav] = useState(null);
 
   const handleOpenNavMenu = (event) => {
@@ -72,9 +73,9 @@ export default function Header({ searchPlaceHolder, categories }) {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {dummyCategories.map((category) => (
+              {categories.map((category) => (
                 <MenuItem key={category} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{category}</Typography>
+                  <Typography textAlign="center" color={'primary'}>{category}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -95,7 +96,7 @@ export default function Header({ searchPlaceHolder, categories }) {
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, marginLeft: '1rem' }}>
-            {dummyCategories.map((category) => (
+            {categories.map((category) => (
               <Button
                 key={category}
                 sx={{ my: 2, color: 'primary.main', display: 'block', fontSize: '0.875rem', fontWeight: '500' }}
@@ -105,7 +106,7 @@ export default function Header({ searchPlaceHolder, categories }) {
             ))}
           </Box>
 
-          <InputWithIcon placeholder={searchPlaceHolder || 'Search Products or Brands...'} />
+          <InputWithIcon placeholder={'Search Products or Brands...'} />
           
           <Box sx={{ display: { xs: 'flex',sm:'none'} }}>
             <IconButton size="large" aria-label="show more" aria-haspopup="true" color="primary">
@@ -116,18 +117,36 @@ export default function Header({ searchPlaceHolder, categories }) {
 
           <Box sx={{ display: { xs: 'flex'} }}>
             <IconButton size="large" aria-label="show more" aria-haspopup="true" color="primary">
+              <FavoriteBorderIcon />
+            </IconButton>
+          </Box>
+          
+          <Box sx={{ display: { xs: 'flex'} }}>
+            <IconButton size="large" aria-label="show more" aria-haspopup="true" >
+              <img src="./icons/profile.svg" alt="Cart" />
+            </IconButton>
+          </Box>
+          <Box sx={{ display: { xs: 'flex'} }}>
+            <IconButton size="large" aria-label="show more" aria-haspopup="true" >
             <img src="./icons/cart.svg" alt="Cart" />
             </IconButton>
           </Box>
 
 
-          <Box sx={{ display: { xs: 'flex'} }}>
-            <IconButton size="large" aria-label="show more" aria-haspopup="true" color="primary">
-              <NotificationsNoneIcon />
-            </IconButton>
-          </Box>
+
+
         </Toolbar>
       </AppBar>
     </Box>
   );
 }
+
+Header.propTypes ={
+    searchPlaceHolder: PropTypes.string.isRequired,
+    categories:PropTypes.array.isRequired
+}
+
+Header.defaultProps = {
+    searchPlaceHolder: 'Search Products or Brands...',
+    categories: dummyCategories,
+  };
