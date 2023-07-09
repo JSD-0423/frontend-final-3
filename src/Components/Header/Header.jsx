@@ -142,11 +142,9 @@ export const Header = ({  categories }) => {
 }
 
 Header.propTypes ={
-    searchPlaceHolder: PropTypes.string.isRequired,
     categories:PropTypes.array.isRequired
 }
 
 Header.defaultProps = {
-    searchPlaceHolder: 'Search Products or Brands...',
     categories: dummyCategories,
   };
