@@ -1,8 +1,12 @@
 import { createTheme } from "@mui/material/styles";
+import '@fontsource/inter/300.css';
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/500.css';
+import '@fontsource/inter/700.css';
 
 export const theme = createTheme({
   typography: {
-    fontFamily: "Inter",
+    fontFamily: "inter",
     fontWeightRegular: 400,
     fontWeightMedium: 500,
     fontWeightBold: 700,
@@ -38,7 +42,7 @@ export const theme = createTheme({
       main: "#171520",
     },
     lowEmphasis: {
-      main: "#E62626",
+      main: "#626262",
     },
   },
 });
