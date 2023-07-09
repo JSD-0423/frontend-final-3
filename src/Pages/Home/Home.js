@@ -1,6 +1,5 @@
 import React from "react";
 import "./Home.css";
-import Banner from "../../Components/Banner/Banner";
 import HandPicked from "../../Components/HandPicked/HandPicked";
 
 //Dummy data
@@ -13,7 +12,6 @@ const collections = [
 function Home() {
   return (
     <div>
-      <Banner />
       <HandPicked headLine="Handpicked Collections" collections={collections} />
     </div>
   );
