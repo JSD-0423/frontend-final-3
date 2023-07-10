@@ -12,7 +12,8 @@ function NavigationList({ ListItems }) {
     return (
         <List dense={true} sx={{
             p: 0,
-            color: 'lightText.main'
+            color: 'lightText.main',
+            marginTop: '5px'
         }}>
             {ListItems? ListItems.map((navLink, i) =>{
                 return <NavigationLink key={i} linkText={navLink}/>

@@ -4,14 +4,14 @@ import { Typography, Grid } from '@mui/material';
 import { StyledFooter } from './StyledFooter';
 import { theme } from '../../Theme/Theme';
 import NavigationList from '../NavigationList/NavigationList';
-const categories = { listMainText: 'Shope By Category', list: ['HandBags', 'Watches', 'Skincare', 'Jewllery', 'Apparels', 'HandBags', 'Watches', 'Skincare', 'Jewllery', 'Apparels'] };
-const products = { listMainText: 'Shope By Product', list: ['HandBags', 'Watches', 'Skincare', 'Jewllery', 'Apparels', 'HandBags', 'Watches', 'Skincare', 'Jewllery', 'Apparels'] };
+const categories = { listMainText: 'Shope By Category', list: ['HandBags', 'Watches', 'Skincare', 'Jewllery', 'Apparels', 'HandBags', 'Watches'] };
+const products = { listMainText: 'Shope By Product', list: ['HandBags', 'Watches', 'Skincare'] };
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
 import TextWithIcon from '../TextWithIcon/TextWithIcon';
 import SocialMediaLinks from '../SocialMediaLinks/SocialMediaLinks';
 
-const socialMedia = [{Icon: FacebookOutlinedIcon , Link:'www.facebook.com'}, {Icon: FacebookOutlinedIcon , Link:'www.facebook.com'}, {Icon: FacebookOutlinedIcon , Link:'www.facebook.com'},{Icon: FacebookOutlinedIcon , Link:'www.facebook.com'}]
+const socialMedia = [{ Icon: FacebookOutlinedIcon, Link: 'www.facebook.com' }, { Icon: FacebookOutlinedIcon, Link: 'www.facebook.com' }, { Icon: FacebookOutlinedIcon, Link: 'www.facebook.com' }, { Icon: FacebookOutlinedIcon, Link: 'www.facebook.com' }]
 
 Footer.propTypes = {
     categories: PropTypes.object.isRequired,
@@ -33,8 +33,12 @@ function Footer({ location, rights, categories, products, socialMedia }) {
 
     return (
         <StyledFooter theme={theme}>
-            <Grid container spacing={2}>
-                <Grid item xs={12} sm={2}>
+            <Grid container spacing={2} px={6} py={3}>
+                <Grid item xs={12} sm={2} sx={{
+                    display:{xs: 'flex', sm: 'block'},
+                    alignItems: 'center',
+                    flexDirection: 'column'
+                }}>
                     <Typography variant="body1" align="left" sx={{
                         color: 'bright.main'
                     }}>
@@ -42,20 +46,30 @@ function Footer({ location, rights, categories, products, socialMedia }) {
                     </Typography>
                     <NavigationList ListItems={categories.list} />
                 </Grid>
-                <Grid item xs={12} sm={2}>
+                <Grid item xs={12} sm={2} sx={{
+                    display:{xs: 'flex', sm: 'block'},
+                    alignItems: 'center',
+                    flexDirection: 'column'
+                }}>
                     <Typography variant="body1" align="left" sx={{
                         color: 'bright.main'
                     }}>
                         {products.listMainText}
                     </Typography>
-                    <NavigationList ListItems={products.list} />
+                    <NavigationList ListItems={products.list}/>
                 </Grid>
-                <Grid item xs={12} sm={8}>
-                    <SocialMediaLinks socialMedia={socialMedia}/>
-                    <Typography variant="body1" align="right">
-                        <TextWithIcon location={location} LocationOnOutlinedIcon={LocationOnOutlinedIcon}/>
-                    </Typography>
-                    <Typography variant="body1" align="right">
+                <Grid item xs={12} sm={8} sx={{
+                    display: 'flex',
+                    alignItems: {xs: 'center', sm: 'end'},
+                    flexDirection: 'column'
+                }} >
+                    <SocialMediaLinks socialMedia={socialMedia} />
+                    <TextWithIcon text={location} IconComponent={LocationOnOutlinedIcon} width={'100%'} />
+                    <Typography variant="body1" align="right" sx={{
+                        color: 'lightText.main',
+                        fontWeight: 'fontWeightMedium',
+                        fontSize: '14px'
+                    }}>
                         {rights}
                     </Typography>
                 </Grid>

@@ -6,11 +6,18 @@ NavigationLink.propTypes = {
     linkText: PropTypes.string.isRequired,
 }
 
-function NavigationLink({linkText}) {
+function NavigationLink({ linkText }) {
     return (
-        <ListItem>
+        <ListItem sx={{
+            padding: 0,
+        }}>
             <ListItemText
                 primary={linkText}
+                fontWeight={'fontWeightMedium'}
+                primaryTypographyProps={{
+                    fontWeight: 'fontWeightMedium',
+                    fontSize: '16px'
+                }}
             />
         </ListItem>
     )
