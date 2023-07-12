@@ -37,6 +37,3 @@ export const BrandCard = ({ brand }) => {
 BrandCard.propTypes = {
     brand: PropTypes.object.isRequired
 }
-BrandCard.defaultProp = {
-    brand: PropTypes.object.isRequired
-}
