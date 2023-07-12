@@ -58,7 +58,7 @@ export  const TitledContainerWithButton=({containerTitle,buttonTitle,children})=
 }
 
 TitledContainerWithButton.propTypes={
-  children:PropTypes.any.isRequired,
-    containerTitle:PropTypes.string.isRequired,
-    buttonTitle:PropTypes.string,
+  children:PropTypes.node.isRequired,
+  containerTitle:PropTypes.string.isRequired,
+  buttonTitle:PropTypes.string,
 }
