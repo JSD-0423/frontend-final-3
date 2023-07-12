@@ -23,7 +23,7 @@ export const ProductCard = ({ product }) => {
             },
         }} elevation={0}>
 
-            <img src={product.imgUrl} alt="" style={{
+            <img src={product.imgUrl} alt={`${product.name} logo`} style={{
                 minHeight: {
                     sx: "8.625rem",
                     md: "17.875rem"
@@ -79,5 +79,14 @@ export const ProductCard = ({ product }) => {
     )
 }
 ProductCard.propTypes = {
-    product: PropTypes.object.isRequired
+    product: PropTypes.shape({
+        imgUrl:PropTypes.string,
+        brand:PropTypes.string,
+        name:PropTypes.string,
+        price:PropTypes.shape({
+            current:PropTypes.number,
+            actual:PropTypes.number,
+            dicountPercentage:PropTypes.number,
+        })
+    }).isRequired
 }
