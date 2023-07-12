@@ -23,7 +23,7 @@ export  const TitledContainerWithButton=({containerTitle,buttonTitle,children})=
          sx={{
                 color: "dark.main",
                 fontWeight: "fontWeightLabelSmall",
-                fontSize: { xs: " 0.875rem",sm:"1.2rem", md: "1.4rem" },
+                fontSize: { xs: " 0.875rem",sm:"1.2rem", md: "1.7rem" },
             }}>
               
            {containerTitle}
@@ -41,7 +41,7 @@ export  const TitledContainerWithButton=({containerTitle,buttonTitle,children})=
         }}>
         <Button variant='text' sx={{
               fontWeight:"fontWeightMedium",
-              fontSize: { xs: " 0.875rem",sm:"1rem", md: "1.2rem" ,paddingInline:"0.5rem" },
+              fontSize: { xs: " 0.875rem",sm:".9rem", md: "1rem" ,paddingInline:"0.5rem" },
             }}>{buttonTitle}
             </Button>
         <NavigateNextIcon/>
