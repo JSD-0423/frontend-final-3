@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types';
 import {Box, Typography, Button } from '@mui/material';
-
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 export  const TitledContainerWithButton=({containerTitle,buttonTitle,children})=> {
 
   return (  
@@ -32,18 +32,22 @@ export  const TitledContainerWithButton=({containerTitle,buttonTitle,children})=
 
         {
         (buttonTitle)?
-        <Button variant='text'>
+        <Box sx={{
+          display:"flex",
+          justifyContent:"center",
+          alignItems:"center",
+          marginRight:".5rem",
 
-          <Typography px={'0.5rem'} sx={{
-            fontWeight:"fontWeightMedium",
-            fontSize: { xs: " 0.875rem",sm:"1rem", md: "1.2rem" },
+        }}>
+        <Button variant='text' sx={{
+              fontWeight:"fontWeightMedium",
+              fontSize: { xs: " 0.875rem",sm:"1rem", md: "1.2rem" ,paddingInline:"0.5rem" },
+            }}>{buttonTitle}
+            </Button>
+        <NavigateNextIcon/>
+        </Box>
+        
 
-             
-          }}>{buttonTitle}
-            </Typography>
-
-          </Button>
-          
         :null
         }
         
