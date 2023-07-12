@@ -23,7 +23,7 @@ export  const TitledContainerWithButton=({containerTitle,buttonTitle,children})=
          sx={{
                 color: "dark.main",
                 fontWeight: "fontWeightLabelSmall",
-                fontSize: { xs: " 0.875rem",sm:"1.2rem", md: "1.7rem" },
+                fontSize: { xs: " 0.875rem",sm:"1.2rem", md: "1.5rem" },
             }}>
               
            {containerTitle}
