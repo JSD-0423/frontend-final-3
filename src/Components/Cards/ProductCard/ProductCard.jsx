@@ -29,14 +29,15 @@ export const ProductCard = ({ product }) => {
                     md: "17.875rem"
                 },
                 width: "100%",
-                borderRadius: ".3rem",
+                borderRadius: ".5rem",
                 objectFit: "cover"
             }} />
 
             <Box sx={{
                 display: "flex",
                 justifyContent: "space-between",
-                alignItems: "center"
+                alignItems: "center",
+                marginTop:".2rem"
             }}>
 
                 <Typography sx={{
