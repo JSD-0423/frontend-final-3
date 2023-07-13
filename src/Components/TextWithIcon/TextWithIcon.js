@@ -2,11 +2,6 @@ import {  Grid, Typography } from '@mui/material'
 import React from 'react'
 import PropTypes from 'prop-types';
 
-TextWithIcon.propTypes = {
-    text: PropTypes.string.isRequired,
-    IconComponent: PropTypes.object.isRequired,
-}
-
 function TextWithIcon({ text, IconComponent }) {
     return (
         <Grid container spacing={1} sx={{
@@ -30,6 +25,11 @@ function TextWithIcon({ text, IconComponent }) {
             </Grid>
         </Grid>
     )
+}
+
+TextWithIcon.propTypes = {
+    text: PropTypes.string.isRequired,
+    IconComponent: PropTypes.object.isRequired,
 }
 
 export default TextWithIcon

@@ -3,10 +3,6 @@ import { List} from '@mui/material';
 import NavigationLink from '../NavigationLink/NavigationLink';
 import PropTypes from 'prop-types';
 
-NavigationList.propTypes = {
-    ListItems: PropTypes.array.isRequired,
-}
-
 function NavigationList({ ListItems }) {
     
     return (
@@ -15,11 +11,15 @@ function NavigationList({ ListItems }) {
             color: 'lightText.main',
             marginTop: '5px'
         }}>
-            {ListItems? ListItems.map((navLink, i) =>{
+            {ListItems.length? ListItems.map((navLink, i) =>{
                 return <NavigationLink key={i} linkText={navLink}/>
             }): null }
         </List>
     )
+}
+
+NavigationList.propTypes = {
+    ListItems: PropTypes.array.isRequired,
 }
 
 export default NavigationList
