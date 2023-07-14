@@ -24,7 +24,9 @@ export const BrandCard = ({ brand }) => {
                 md: "8.5rem",
                 lg: "10.5rem"
 
-            }
+            },
+            marginRight:"1rem"
+
         }} >
             <img src={brand.imgUrl} alt={`${brand.name} logo`} style={{
                 width: "100%",
