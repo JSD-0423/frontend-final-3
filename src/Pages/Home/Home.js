@@ -1,11 +1,8 @@
 import React from "react";
 import "./Home.css";
 import HandPicked from "../../Components/HandPicked/HandPicked";
-import {TitledContainerWithButton} from "../../Components/TitledContainerWithButton/TitledContainerWithButton";
-import {CardsCarousel} from "../../Components/Cards/CardsCarousel/CardsCarousel";
-
-import { BrandCard } from "../../Components/Cards/BrandCard/BrandCard";
 import NewArrivals from "./components/NewArrivals";
+import ShopByBrand from "./components/ShopByBrand";
 
 //Dummy data
 const collections = [
@@ -109,17 +106,12 @@ function Home() {
   return (
     <div>
 
-
-
       <NewArrivals products={products}/>
-      <TitledContainerWithButton  containerTitle="Shop By Brands">
-          <CardsCarousel>
-          { brands.map(brand => (<BrandCard brand={brand} key={brand.id}></BrandCard>))}
-          </CardsCarousel>
-      </TitledContainerWithButton>
 
-      
+      <ShopByBrand brands={brands} />
+
       <HandPicked headLine="Handpicked Collections" collections={collections} />
+
     </div>
   );
 }
