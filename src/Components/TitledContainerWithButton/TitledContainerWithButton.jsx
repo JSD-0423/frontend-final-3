@@ -43,8 +43,8 @@ export  const TitledContainerWithButton=({containerTitle,buttonTitle,children})=
               fontWeight:"fontWeightMedium",
               fontSize: { xs: " 0.875rem",sm:".9rem", md: "1rem" ,paddingInline:"0.5rem" },
             }}>{buttonTitle}
+            <NavigateNextIcon/>
             </Button>
-        <NavigateNextIcon/>
         </Box>
         
 
