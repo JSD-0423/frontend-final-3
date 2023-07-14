@@ -3,8 +3,9 @@ import "./Home.css";
 import HandPicked from "../../Components/HandPicked/HandPicked";
 import {TitledContainerWithButton} from "../../Components/TitledContainerWithButton/TitledContainerWithButton";
 import {CardsCarousel} from "../../Components/Cards/CardsCarousel/CardsCarousel";
-import { ProductCard } from "../../Components/Cards/ProductCard/ProductCard";
+
 import { BrandCard } from "../../Components/Cards/BrandCard/BrandCard";
+import NewArrivals from "./components/NewArrivals";
 
 //Dummy data
 const collections = [
@@ -108,13 +109,9 @@ function Home() {
   return (
     <div>
 
-      <TitledContainerWithButton  containerTitle="New Arrivals" buttonTitle={"View All"} >
-          <CardsCarousel>
-          { products.map(product => (<ProductCard product={product} key={product.id}></ProductCard>))}
-          </CardsCarousel>
-      </TitledContainerWithButton>
 
 
+      <NewArrivals products={products}/>
       <TitledContainerWithButton  containerTitle="Shop By Brands">
           <CardsCarousel>
           { brands.map(brand => (<BrandCard brand={brand} key={brand.id}></BrandCard>))}
