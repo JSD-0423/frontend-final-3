@@ -109,9 +109,7 @@ function Home() {
       <NewArrivals products={products}/>
 
       <ShopByBrand brands={brands} />
-
       <HandPicked headLine="Handpicked Collections" collections={collections} />
-
     </div>
   );
 }
