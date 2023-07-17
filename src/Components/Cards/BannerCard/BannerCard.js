@@ -1,32 +1,23 @@
-import { Button, Card, Container, Typography } from '@mui/material'
+import { Card } from '@mui/material'
 import React from 'react'
+import PropTypes from 'prop-types';
 
-function BannerCard() {
+function BannerCard({ children, background, align }) {
     return (
-        <Card  align={'right'} sx={{
-            background: 'url("./Assets/MakeUpStart.jpg") left no-repeat, url("./Assets/MakeUpCenter.jpg") center no-repeat, url("./Assets/MakeUpEnd.jpg") right no-repeat',
+        <Card align={align} sx={{
+            backgroundImage: background,
             width: '100%',
-            backgroundSize: '20% 20% 40%',
+            backgroundSize: 'cover',
         }}>
-            <Container sx={{
-                my: 4
-            }}>
-            <Typography variant='body1' my={1}>
-                LifeStyle
-            </Typography>
-            <Typography variant='h4' sx={{
-                maxWidth: '50%',
-            }}>
-                MakeUp Accessories from Top Brands
-            </Typography>
-            <Button sx={{
-                display: {xs: 'block', sm: 'none'}
-            }}>
-                Click me
-            </Button>
-            </Container>
+            {children}
         </Card>
     )
+}
+
+BannerCard.propTypes = {
+    children: PropTypes.string.isRequired,
+    background: PropTypes.string.isRequired,
+    align: PropTypes.string.isRequired
 }
 
 export default BannerCard
