@@ -11,6 +11,7 @@ export const theme = createTheme({
     fontWeightMedium: 500,
     fontWeightBold: 700,
     fontWeightLabelSmall: 600,
+    fontWeightBolder: 800,
   },
   status: {
     error: "#B00020",
@@ -44,6 +45,12 @@ export const theme = createTheme({
     lowEmphasis: {
       main: "#626262",
     },
+    maroon: {
+      main: "#A53F64"
+    },
+    rust: {
+      main: '#97451F'
+    }
   },
   breakpoints: {
     values: {
