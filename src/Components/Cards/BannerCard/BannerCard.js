@@ -8,6 +8,8 @@ function BannerCard({ children, background, align }) {
             backgroundImage: background,
             width: '100%',
             backgroundSize: 'cover',
+            backgroundPosition: 'center center',
+            borderRadius: {xs: '0.5rem', lg:'1.5rem'}
         }}>
             {children}
         </Card>

@@ -11,7 +11,7 @@ function RoundedArrowButton({ color, backgroundColor, justifyContent }) {
             justifyContent: justifyContent,
         }}>
             <EastRoundedIcon sx={{
-                fontSize: { xs: '2rem', sm: '2rem' },
+                fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem', xl:'3.25rem' },
                 minWidth: 0,
                 color: color,
                 borderRadius: '50%',

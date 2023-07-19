@@ -105,11 +105,11 @@ const brands=[
 function Home() {
   return (
     <div>
-
       <NewArrivals products={products}/>
-
       <ShopByBrand brands={brands} />
       <HandPicked headLine="Handpicked Collections" collections={collections} />
+      <HandPicked headLine="Handpicked Collections" collections={collections}/>
+      <MakeupAndSkinCare headerText={'Makeup & Skincare'} fullWidthCardText={'MakeUp Accessories from Top Brands'} fullWidthCardTitle={'LifeStyle'} halfWidthCard1Text={'Skincare Essentials'} halfWidthCard2Text={'Facepacks & Peels'} />
     </div>
   );
 }
