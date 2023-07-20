@@ -5,34 +5,14 @@ import PropTypes from 'prop-types';
 
 export const BrandCard = ({ brand }) => {
     return (
-        <Card elevation={0} sx={{
-            display: "flex",
+        <Card elevation={0} component={"img"} sx={{
             backgroundColor: 'accent.main',
-            justifyContent: "center",
-            alignItems: "center",
-            padding: "1rem",
-            height: {
-                xs: "5.1rem",
-                sm: "6.5rem",
-                md: "8.5rem",
-                lg: "10.5rem"
-
-            },
-            width: {
-                xs: "5.1rem",
-                sm: "6.5rem",
-                md: "8.5rem",
-                lg: "10.5rem"
-
-            },
-            marginRight:"1rem"
-
-        }} >
-            <img src={brand.imgUrl} alt={`${brand.name} logo`} style={{
-                width: "100%",
-                height: "100%"
-                , objectFit: "contain"
-            }} />
+            padding: { lg:"1.5rem",md: ".7rem", xs: "0.5rem" },
+            objectFit: "contain",
+            width: "100%",
+            height: "100%",
+            borderRadius: ".7rem"
+        }} src={brand.imgUrl} alt={`${brand.name} logo`} >
         </Card>
     )
 }

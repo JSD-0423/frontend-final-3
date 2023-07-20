@@ -9,7 +9,7 @@ export  const TitledContainerWithButton=({containerTitle,buttonTitle,children})=
     <Box container display={'flex'} flexDirection={'column'} sx={{
       paddingBlock:"0.2rem",
       paddingLeft:"1rem",
-      marginBlock:'1rem',
+      marginBlock:{xs:'1rem',md:"1.5rem"},
     }} >
 
       <Box sx={{
