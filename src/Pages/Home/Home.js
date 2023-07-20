@@ -101,14 +101,22 @@ const brands=[
     id:"4",
     name:"Zara",
     imgUrl:"./Assets/Zara-Logo.png"
+  }, {
+    id:"5",
+    name:"Zara",
+    imgUrl:"./Assets/Zara-Logo.png"
+  }, {
+    id:"6",
+    name:"Zara",
+    imgUrl:"./Assets/Zara-Logo.png"
   }
 ]
 function Home() {
   return (
     <div>
       <NewArrivals products={products}/>
-      <ShopByBrand brands={brands} />
       <HandPicked headLine="Handpicked Collections" collections={collections} />
+      <ShopByBrand brands={brands} />
       <MakeupAndSkinCare headerText={'Makeup & Skincare'} fullWidthCardText={'MakeUp Accessories from Top Brands'} fullWidthCardTitle={'LifeStyle'} halfWidthCard1Text={'Skincare Essentials'} halfWidthCard2Text={'Facepacks & Peels'} />
     </div>
   );
