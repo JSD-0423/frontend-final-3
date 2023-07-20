@@ -17,8 +17,8 @@ function BannerCard({ children, background, align }) {
 }
 
 BannerCard.propTypes = {
-    children: PropTypes.string.isRequired,
-    background: PropTypes.string.isRequired,
+    children: PropTypes.any.isRequired,
+    background: PropTypes.object.isRequired,
     align: PropTypes.string.isRequired
 }
 
