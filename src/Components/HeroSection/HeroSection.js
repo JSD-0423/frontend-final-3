@@ -3,7 +3,7 @@ import { Box } from '@mui/material'
 import AutoSlideContainer from '../AutoSlideContainer/AutoSlideContainer';
 import SlideImages from '../SlideImages/SlideImages';
 
-function Banner() {
+function HeroSection() {
   return (
     <Box sx={{
       width: '100%', 
@@ -18,4 +18,4 @@ function Banner() {
 }
 
 
-export default Banner
+export default HeroSection

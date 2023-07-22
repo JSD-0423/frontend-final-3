@@ -5,7 +5,7 @@ import {TitledContainerWithButton} from "../../Components/TitledContainerWithBut
 import {CardsCarousel} from "../../Components/Cards/CardsCarousel/CardsCarousel";
 import { ProductCard } from "../../Components/Cards/ProductCard/ProductCard";
 import { BrandCard } from "../../Components/Cards/BrandCard/BrandCard";
-import Banner from "../../Components/Banner/Banner";
+import HeroSection from "../../Components/HeroSection/HeroSection";
 
 //Dummy data
 const collections = [
@@ -108,7 +108,7 @@ const brands=[
 function Home() {
   return (
     <div>
-      <Banner/>
+      <HeroSection/>
       <TitledContainerWithButton  containerTitle="New Arrivals" buttonTitle={"View All"} >
           <CardsCarousel>
           { products.map(product => (<ProductCard product={product} key={product.id}></ProductCard>))}
