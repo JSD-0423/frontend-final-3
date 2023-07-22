@@ -1,7 +1,7 @@
 import React from 'react'
-import { TitledContainerWithButton } from "../../../Components/TitledContainerWithButton/TitledContainerWithButton";
+import { TitledContainerWithButton } from "../TitledContainerWithButton/TitledContainerWithButton";
 import PropTypes from 'prop-types';
-import { BrandCard } from '../../../Components/Cards/BrandCard/BrandCard';
+import { BrandCard } from '../Cards/BrandCard/BrandCard';
 import { Box, Grid } from '@mui/material';
 
 
