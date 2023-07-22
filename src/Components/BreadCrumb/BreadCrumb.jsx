@@ -10,7 +10,8 @@ export default function BreadCrumb({ MainTitle, SubTitle, ProductTitle }) {
             gap: "1rem",
             alignItems: "center",
             justifyContent: "flex-start",
-            paddingInline:"1rem"
+            paddingInline:"1rem",
+            marginBlock:"1rem"
         }}>
 
             <Typography variant='h1' sx={{
