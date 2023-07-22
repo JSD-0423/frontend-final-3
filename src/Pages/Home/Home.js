@@ -1,11 +1,10 @@
 import React from "react";
 import "./Home.css";
 import HandPicked from "../../Components/HandPicked/HandPicked";
-import {TitledContainerWithButton} from "../../Components/TitledContainerWithButton/TitledContainerWithButton";
-import {CardsCarousel} from "../../Components/Cards/CardsCarousel/CardsCarousel";
-import { ProductCard } from "../../Components/Cards/ProductCard/ProductCard";
-import { BrandCard } from "../../Components/Cards/BrandCard/BrandCard";
 import HeroSection from "../../Components/HeroSection/HeroSection";
+import NewArrivals from "./components/NewArrivals";
+import ShopByBrand from "./components/ShopByBrand";
+import Banner from "../../Components/Banner/Banner";
 
 //Dummy data
 const collections = [
@@ -109,21 +108,10 @@ function Home() {
   return (
     <div>
       <HeroSection/>
-      <TitledContainerWithButton  containerTitle="New Arrivals" buttonTitle={"View All"} >
-          <CardsCarousel>
-          { products.map(product => (<ProductCard product={product} key={product.id}></ProductCard>))}
-          </CardsCarousel>
-      </TitledContainerWithButton>
-
-
-      <TitledContainerWithButton  containerTitle="Shop By Brands">
-          <CardsCarousel>
-          { brands.map(brand => (<BrandCard brand={brand} key={brand.id}></BrandCard>))}
-          </CardsCarousel>
-      </TitledContainerWithButton>
-
-      
+      <NewArrivals products={products}/>
       <HandPicked headLine="Handpicked Collections" collections={collections} />
+      <ShopByBrand brands={brands} />
+      <Banner fullWidthCardText={'Limited edition products'} halfWidthCard1Text={'15% off and more!'} halfWidthCard2Text={'Popular in the community!'}/>
     </div>
   );
 }

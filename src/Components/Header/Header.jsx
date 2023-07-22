@@ -2,8 +2,6 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import {
   Box,
-  AppBar,
-  Toolbar,
   Typography,
   IconButton,
   Button,
@@ -30,9 +28,20 @@ export const Header = ({  categories }) => {
   };
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" color="bright" elevation={0}>
-        <Toolbar>
+
+    <Box component={"header"} sx={{
+      display:"flex",
+      alignItems:"center",
+      paddingInline:{
+        xs:".5rem",
+        sm:"1rem"
+      },
+      paddingBlock:{
+        xs:".6rem",
+        md:"0"
+      }
+    }}>
+
           <Box
             sx={{
               display: {
@@ -99,7 +108,7 @@ export const Header = ({  categories }) => {
             {categories.map((category) => (
               <Button
                 key={category}
-                sx={{ my: 2, color: 'primary.main', display: 'block', fontSize: '0.875rem', fontWeight: '500' }}
+                sx={{ my: 2, color: 'primary.main', display: 'block', fontSize: '0.875rem', fontWeight: '500' ,textTransform:"none"}}
               >
                 {category}
               </Button>
@@ -131,13 +140,8 @@ export const Header = ({  categories }) => {
             <img src="./icons/cart.svg" alt="Cart" />
             </IconButton>
           </Box>
-
-
-
-
-        </Toolbar>
-      </AppBar>
-    </Box>
+        </Box>
+  
   );
 }
 
