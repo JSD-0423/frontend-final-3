@@ -1,8 +1,8 @@
 import React from 'react'
-import { TitledContainerWithButton } from "../../../Components/TitledContainerWithButton/TitledContainerWithButton";
-import { CardsCarousel } from "../../../Components/Cards/CardsCarousel/CardsCarousel";
+import { TitledContainerWithButton } from "../TitledContainerWithButton/TitledContainerWithButton";
+import { CardsCarousel } from "../Cards/CardsCarousel/CardsCarousel";
 import PropTypes from 'prop-types';
-import { ProductCard } from '../../../Components/Cards/ProductCard/ProductCard';
+import { ProductCard } from '../Cards/ProductCard/ProductCard';
 import { Box } from '@mui/material';
 
 export default function NewArrivals({ products }) {
