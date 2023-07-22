@@ -1,6 +1,6 @@
 import React from 'react';
 import {Outlet} from "react-router-dom";
-// import Footer from '../Components/Footer/Footer';
+import Footer from '../Components/Footer/Footer';
 import {Header} from '../Components/Header/Header';
 
 export default function RootLayout() {
@@ -11,8 +11,9 @@ export default function RootLayout() {
 
                 <Outlet/>
 
-                {/* <Footer/> */}
             </main>
+            <Footer/>
+
         </>
     );
 }
