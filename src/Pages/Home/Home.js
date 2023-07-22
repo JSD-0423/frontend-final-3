@@ -3,6 +3,7 @@ import "./Home.css";
 import HandPicked from "../../Components/HandPicked/HandPicked";
 import NewArrivals from "./components/NewArrivals";
 import ShopByBrand from "./components/ShopByBrand";
+import MakeupAndSkinCare from "../../Components/MakeupAndSkinCare/MakeupAndSkinCare";
 
 //Dummy data
 const collections = [
@@ -81,6 +82,57 @@ const products=[
   imgUrl:'./Assets/laura-chouette-Atomp7YdMaE-unsplash 1.png',
   fullDescription:" Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, magnam fuga harum ab aliquid facilis quo accusantium nemo reiciendis rem eaque obcaecati, culpa aliquam illum numquam blanditiis, inventore amet repellendus!"
    
+  },  {
+
+    id:'5',
+    name:'Grande',
+    descripton:'Leather Coach Bag with adjustable starps.',
+    brand:'Blossom Pouch',
+    price:{
+      current:'39.49',
+      actual:"78.66",
+      discountPercentage:'50'
+    },
+    rating:"4",
+    totoalRatings:'43',
+
+  imgUrl:'./Assets/laura-chouette-Atomp7YdMaE-unsplash 1.png',
+  fullDescription:" Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, magnam fuga harum ab aliquid facilis quo accusantium nemo reiciendis rem eaque obcaecati, culpa aliquam illum numquam blanditiis, inventore amet repellendus!"
+   
+  },  {
+
+    id:'6',
+    name:'Grande',
+    descripton:'Leather Coach Bag with adjustable starps.',
+    brand:'Blossom Pouch',
+    price:{
+      current:'39.49',
+      actual:"78.66",
+      discountPercentage:'50'
+    },
+    rating:"4",
+    totoalRatings:'43',
+
+  imgUrl:'./Assets/laura-chouette-Atomp7YdMaE-unsplash 1.png',
+  fullDescription:" Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, magnam fuga harum ab aliquid facilis quo accusantium nemo reiciendis rem eaque obcaecati, culpa aliquam illum numquam blanditiis, inventore amet repellendus!"
+   
+  },  {
+
+    id:'7',
+    name:'Grande',
+    descripton:'Leather Coach Bag with adjustable starps.',
+    brand:'Blossom Pouch',
+    price:{
+      current:'39.49',
+      actual:"78.66",
+      discountPercentage:'50'
+    },
+    rating:"4",
+    totoalRatings:'43',
+
+  imgUrl:'./Assets/laura-chouette-Atomp7YdMaE-unsplash 1.png',
+  fullDescription:" Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, magnam fuga harum ab aliquid facilis quo accusantium nemo reiciendis rem eaque obcaecati, culpa aliquam illum numquam blanditiis, inventore amet repellendus!"
+   
   }
 ];
 const brands=[
@@ -100,18 +152,23 @@ const brands=[
     id:"4",
     name:"Zara",
     imgUrl:"./Assets/Zara-Logo.png"
+  }, {
+    id:"5",
+    name:"Zara",
+    imgUrl:"./Assets/Zara-Logo.png"
+  }, {
+    id:"6",
+    name:"Zara",
+    imgUrl:"./Assets/Zara-Logo.png"
   }
 ]
 function Home() {
   return (
     <div>
-
       <NewArrivals products={products}/>
-
-      <ShopByBrand brands={brands} />
-
       <HandPicked headLine="Handpicked Collections" collections={collections} />
-
+      <ShopByBrand brands={brands} />
+      <MakeupAndSkinCare headerText={'Makeup & Skincare'} fullWidthCardText={'MakeUp Accessories from Top Brands'} fullWidthCardTitle={'LifeStyle'} halfWidthCard1Text={'Skincare Essentials'} halfWidthCard2Text={'Facepacks & Peels'} />
     </div>
   );
 }

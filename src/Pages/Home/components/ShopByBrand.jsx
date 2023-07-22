@@ -1,20 +1,34 @@
 import React from 'react'
-import {TitledContainerWithButton} from "../../../Components/TitledContainerWithButton/TitledContainerWithButton";
-import {CardsCarousel} from "../../../Components/Cards/CardsCarousel/CardsCarousel";
+import { TitledContainerWithButton } from "../../../Components/TitledContainerWithButton/TitledContainerWithButton";
 import PropTypes from 'prop-types';
 import { BrandCard } from '../../../Components/Cards/BrandCard/BrandCard';
+import { Box, Grid } from '@mui/material';
 
 
-export default function ShopByBrand({brands}) {
+export default function ShopByBrand({ brands }) {
   return (
-    <TitledContainerWithButton  containerTitle="Shop By Brands">
-    <CardsCarousel>
-    { brands.map(brand => (<BrandCard brand={brand} key={brand.id}></BrandCard>))}
-    </CardsCarousel>
-</TitledContainerWithButton>
+
+    <TitledContainerWithButton containerTitle="Shop By Brands" buttonTitle={"View all"}>
+      <Box sx={{
+        paddingRight: {
+          xs: ".5rem",
+          sm: "1rem"
+        },
+      }}>
+
+      <Grid container spacing={{ xs: 1, sm: 1, md: 4 }} columns={{ xs: 6, sm: 12 }}>
+        {brands.map((brand) => (
+          <Grid item xs={2} md={2} key={brand.id}>
+            <BrandCard brand={brand}></BrandCard>
+          </Grid>
+        ))}
+      </Grid>
+      </Box>
+
+    </TitledContainerWithButton>
   )
 }
 
 ShopByBrand.propTypes = {
-    brands: PropTypes.array
+  brands: PropTypes.array
 }
