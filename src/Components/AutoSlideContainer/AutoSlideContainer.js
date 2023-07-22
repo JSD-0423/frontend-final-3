@@ -1,27 +1,18 @@
-import React, { useEffect } from 'react'
-import { Slide } from '@mui/material'
+import React from 'react'
 import PropTypes from 'prop-types';
+import Carousel from 'react-material-ui-carousel'
 
 function AutoSlideContainer({ children }) {
-    const [checked, setChecked] = React.useState(false);
-
-    useEffect(() => {
-        setChecked((prev) => !prev)
-        return () => {
-            setChecked((prev) => !prev)
-        }
-    }, [])
-    
     return (
-        <Slide direction="left" in={checked} mountOnEnter unmountOnExit>
+        <Carousel autoPlay={true}>
             {children}
-        </Slide>
+        </Carousel>
     )
 }
 
 
 AutoSlideContainer.propTypes = {
-    children: PropTypes.object.isRequired
+    children: PropTypes.array.isRequired
 }
 
 export default AutoSlideContainer
