@@ -9,7 +9,7 @@ export default function ShopByBrand({ brands }) {
   return (
 
     <TitledContainerWithButton containerTitle="Shop By Brands" buttonTitle={"View all"}>
-      <Box sx={{
+      <Box id="Brands" sx={{
         paddingRight: {
           xs: ".5rem",
           sm: "1rem"

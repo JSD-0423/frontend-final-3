@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 
 function Banner({ fullWidthCardText, halfWidthCard1Text, halfWidthCard2Text }) {
   return (
-    <Box p={2}>
+    <Box p={2} id="Trendy">
       <Grid container spacing={{ xs: '0.8125rem', md: '1.5rem', lg: '1.85rem' }}>
         <Grid item xs={12}>
           <BannerCard background={{ xs: 'url("./Assets/makeUpMobile.jpg")', sm: 'url("./Assets/makeUpDeskTop.jpg")' }} align='right'>
