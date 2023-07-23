@@ -1,9 +1,10 @@
 import React from "react";
 import "./Home.css";
 import HandPicked from "../../Components/HandPicked/HandPicked";
-import NewArrivals from "../../Components/NewArrivals/NewArrivals";
-import ShopByBrand from "../../Components/ShopByBrand/ShopByBrand";
-import MakeupAndSkinCare from "../../Components/MakeupAndSkinCare/MakeupAndSkinCare";
+import NewArrivals from "./components/NewArrivals";
+import ShopByBrand from "./components/ShopByBrand";
+import Banner from "../../Components/Banner/Banner";
+
 
 //Dummy data
 const collections = [
@@ -168,7 +169,7 @@ function Home() {
       <NewArrivals products={products}/>
       <HandPicked headLine="Handpicked Collections" collections={collections} />
       <ShopByBrand brands={brands} />
-      <MakeupAndSkinCare headerText={'Makeup & Skincare'} fullWidthCardText={'MakeUp Accessories from Top Brands'} fullWidthCardTitle={'LifeStyle'} halfWidthCard1Text={'Skincare Essentials'} halfWidthCard2Text={'Facepacks & Peels'} />
+      <Banner fullWidthCardText={'Limited edition products'} halfWidthCard1Text={'15% off and more!'} halfWidthCard2Text={'Popular in the community!'}/>
     </div>
   );
 }
