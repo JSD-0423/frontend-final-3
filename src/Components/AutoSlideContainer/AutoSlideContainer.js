@@ -4,7 +4,11 @@ import Carousel from 'react-material-ui-carousel'
 
 function AutoSlideContainer({ children }) {
     return (
-        <Carousel autoPlay={true}>
+        <Carousel autoPlay={true} indicatorIconButtonProps={{
+            style: {
+                display: 'none'
+            }
+        }}>
             {children}
         </Carousel>
     )

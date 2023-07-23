@@ -9,7 +9,8 @@ function BannerCard({ children, background, align }) {
             width: '100%',
             backgroundSize: 'cover',
             backgroundPosition: 'center center',
-            borderRadius: {xs: '0.5rem', lg:'1.5rem'}
+            borderRadius: {xs: '0.5rem', lg:'1.5rem'},
+            overflow: 'auto'
         }}>
             {children}
         </Card>
