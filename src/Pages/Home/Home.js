@@ -3,6 +3,7 @@ import "./Home.css";
 import HandPicked from "../../Components/HandPicked/HandPicked";
 import NewArrivals from "../../Components/NewArrivals/NewArrivals";
 import ShopByBrand from "../../Components/ShopByBrand/ShopByBrand";
+import HeroSection from "../../Components/HeroSection/HeroSection";
 import Banner from "../../Components/Banner/Banner";
 
 
@@ -166,6 +167,7 @@ const brands=[
 function Home() {
   return (
     <div>
+      <HeroSection/>
       <NewArrivals products={products}/>
       <HandPicked headLine="Handpicked Collections" collections={collections} />
       <ShopByBrand brands={brands} />
