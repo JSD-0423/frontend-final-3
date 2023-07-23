@@ -1,6 +1,7 @@
 import React from "react";
 import "./Home.css";
 import HandPicked from "../../Components/HandPicked/HandPicked";
+import HeroSection from "../../Components/HeroSection/HeroSection";
 import NewArrivals from "./components/NewArrivals";
 import ShopByBrand from "./components/ShopByBrand";
 import Banner from "../../Components/Banner/Banner";
@@ -106,6 +107,7 @@ const brands=[
 function Home() {
   return (
     <div>
+      <HeroSection/>
       <NewArrivals products={products}/>
       <HandPicked headLine="Handpicked Collections" collections={collections} />
       <ShopByBrand brands={brands} />

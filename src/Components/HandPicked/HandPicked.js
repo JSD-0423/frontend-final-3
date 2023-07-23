@@ -13,7 +13,9 @@ function HandPicked({ headLine, collections }) {
     return (
         <Box sx={{
             p: 2,
-            backgroundColor: "primary.main"
+            backgroundColor: "primary.main",
+            width: '100%',
+            height: 'auto'
         }}>
             <Typography mb={2} variant="body1" component="div" sx={{
                 color: "bright.main",
