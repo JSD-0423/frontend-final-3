@@ -1,8 +1,8 @@
 import React from "react";
 import "./Home.css";
 import HandPicked from "../../Components/HandPicked/HandPicked";
-import NewArrivals from "./components/NewArrivals";
-import ShopByBrand from "./components/ShopByBrand";
+import NewArrivals from "../../Components/NewArrivals/NewArrivals";
+import ShopByBrand from "../../Components/ShopByBrand/ShopByBrand";
 import Banner from "../../Components/Banner/Banner";
 
 
