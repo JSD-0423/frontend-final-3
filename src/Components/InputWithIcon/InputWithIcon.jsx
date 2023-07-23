@@ -3,25 +3,31 @@ import React from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 import { Search, SearchIconWrapper, StyledInputBase } from './StyledInputWithIcon';
 
-export const InputWithIcon=({placeholder})=> {
-    return (
-        <Search sx={{
-            display:{
-                xs:'none',
-                sm:'block'
+export const InputWithIcon = ({ placeholder }) => {
+  return (
+    <Search sx={{
+      display: {
+        xs: 'none',
+        sm: 'block'
+      }
+    }} >
+      <SearchIconWrapper>
+        <SearchIcon color='primary' />
+      </SearchIconWrapper>
+      <StyledInputBase
+        placeholder={placeholder}
+        inputProps={{
+          'aria-label': 'search', sx: {
+            "&::placeholder": {
+              fontSize:{xs:".8rem",md:"1rem"}
             }
-        }} >
-        <SearchIconWrapper>
-          <SearchIcon color='primary'/>
-        </SearchIconWrapper>
-        <StyledInputBase
-           placeholder={placeholder}
-          inputProps={{ 'aria-label': 'search' }}
-        />
-      </Search>
-    )
+          }
+        }}
+      />
+    </Search>
+  )
 }
-InputWithIcon.propTypes ={
+InputWithIcon.propTypes = {
   placeholder: PropTypes.string.isRequired,
 
 }

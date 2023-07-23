@@ -9,6 +9,7 @@ export const CardsCarousel = ({ children }) => {
       width: "100%",
       height: "auto",
       display: "flex",
+      gap:"1rem",
       overflow: "auto",
       whiteSpace: "nowrap"
     }}>
