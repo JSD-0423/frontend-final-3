@@ -3,7 +3,7 @@ import "./Home.css";
 import HandPicked from "../../Components/HandPicked/HandPicked";
 import NewArrivals from "./components/NewArrivals";
 import ShopByBrand from "./components/ShopByBrand";
-import MakeupAndSkinCare from "../../Components/MakeupAndSkinCare/MakeupAndSkinCare";
+import Banner from "../../Components/Banner/Banner";
 
 //Dummy data
 const collections = [
@@ -107,9 +107,9 @@ function Home() {
   return (
     <div>
       <NewArrivals products={products}/>
-      <ShopByBrand brands={brands} />
       <HandPicked headLine="Handpicked Collections" collections={collections} />
-      <MakeupAndSkinCare headerText={'Makeup & Skincare'} fullWidthCardText={'MakeUp Accessories from Top Brands'} fullWidthCardTitle={'LifeStyle'} halfWidthCard1Text={'Skincare Essentials'} halfWidthCard2Text={'Facepacks & Peels'} />
+      <ShopByBrand brands={brands} />
+      <Banner fullWidthCardText={'Limited edition products'} halfWidthCard1Text={'15% off and more!'} halfWidthCard2Text={'Popular in the community!'}/>
     </div>
   );
 }
