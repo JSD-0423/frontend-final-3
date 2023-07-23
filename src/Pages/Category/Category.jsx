@@ -92,6 +92,24 @@ const products = [
         imgUrl: '../Assets/laura-chouette-Atomp7YdMaE-unsplash 1.png',
         fullDescription: " Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, magnam fuga harum ab aliquid facilis quo accusantium nemo reiciendis rem eaque obcaecati, culpa aliquam illum numquam blanditiis, inventore amet repellendus!"
 
+    },
+    {
+
+        id: '5',
+        name: 'Grande',
+        descripton: 'Leather Coach Bag with adjustable starps.',
+        brand: 'Blossom Pouch',
+        price: {
+            current: '39.49',
+            actual: "78.66",
+            discountPercentage: '50'
+        },
+        rating: "4.5",
+        totoalRatings: '43',
+
+        imgUrl: '../Assets/laura-chouette-Atomp7YdMaE-unsplash 1.png',
+        fullDescription: " Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, magnam fuga harum ab aliquid facilis quo accusantium nemo reiciendis rem eaque obcaecati, culpa aliquam illum numquam blanditiis, inventore amet repellendus!"
+
     }
 ];
 function Category({ targetURL }) {
