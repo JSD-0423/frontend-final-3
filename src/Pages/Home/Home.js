@@ -1,9 +1,11 @@
 import React from "react";
 import "./Home.css";
 import HandPicked from "../../Components/HandPicked/HandPicked";
-import NewArrivals from "./components/NewArrivals";
-import ShopByBrand from "./components/ShopByBrand";
+import NewArrivals from "../../Components/NewArrivals/NewArrivals";
+import ShopByBrand from "../../Components/ShopByBrand/ShopByBrand";
+import HeroSection from "../../Components/HeroSection/HeroSection";
 import Banner from "../../Components/Banner/Banner";
+
 
 //Dummy data
 const collections = [
@@ -165,6 +167,7 @@ const brands=[
 function Home() {
   return (
     <div>
+      <HeroSection/>
       <NewArrivals products={products}/>
       <HandPicked headLine="Handpicked Collections" collections={collections} />
       <ShopByBrand brands={brands} />
