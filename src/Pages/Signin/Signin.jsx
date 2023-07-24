@@ -3,11 +3,11 @@ import { useNavigate } from "react-router-dom";
 import Axios from "axios";
 import { Box, Typography, Alert } from '@mui/material'
 
-import SignupForm from "../../Components/SignupForm";
+import SigninForm from "../../Components/SigninForm";
 
-const TITLE = "Signup";
+const TITLE = "Signin";
 
-function Signup() {
+function Signin() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
@@ -17,7 +17,8 @@ function Signup() {
     try {
       setLoading(true);
       setError("");
-      const res = await Axios.post("https://store-osn9.onrender.com/users/signup", userData);
+      const res = await Axios.post("http://localhost:5000/users/login", userData);
+      // const res = await Axios.post("https://store-osn9.onrender.com/users/login", userData);
       setLoading(false);
       navigate("/", {
         state: {
@@ -39,9 +40,9 @@ function Signup() {
       <Typography variant="h2" color="primary" sx={{pb: "2rem", fontWeight: "bold"}}>
         {TITLE}
       </Typography>
-      <SignupForm onFinish={onFinish} isLoading={loading} />
+      <SigninForm onFinish={onFinish} isLoading={loading} />
     </Box>
   );
 }
 
-export default Signup;
+export default Signin;
