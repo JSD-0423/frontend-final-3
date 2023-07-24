@@ -3,6 +3,7 @@ import { TitledContainerWithButton } from "../TitledContainerWithButton/TitledCo
 import PropTypes from 'prop-types';
 import { BrandCard } from '../Cards/BrandCard/BrandCard';
 import { Box, Grid } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 
 export default function ShopByBrand({ brands }) {
@@ -17,11 +18,13 @@ export default function ShopByBrand({ brands }) {
       }}>
 
       <Grid container spacing={{ xs: 1, sm: 1, md: 4 }} columns={{ xs: 6, sm: 12 }}>
-        {brands.map((brand) => (
+        {brands ? brands.map((brand) => (
           <Grid item xs={2} md={2} key={brand.id}>
+            <Link to={``} style={{textDecoration: 'none'}}>
             <BrandCard brand={brand}></BrandCard>
+            </Link>
           </Grid>
-        ))}
+        )) : 'no data found'}
       </Grid>
       </Box>
 

@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from 'react'
 import "./Home.css";
 import HandPicked from "../../Components/HandPicked/HandPicked";
 import NewArrivals from "../../Components/NewArrivals/NewArrivals";
 import ShopByBrand from "../../Components/ShopByBrand/ShopByBrand";
 import HeroSection from "../../Components/HeroSection/HeroSection";
 import Banner from "../../Components/Banner/Banner";
+import { fetchData } from "../../Services/network";
 
 //Dummy data
 const collections = [
@@ -136,40 +137,28 @@ const products = [
 
   }
 ];
-const brands = [
-  {
-    id: "1",
-    name: "Zara",
-    imgUrl: "./Assets/Zara-Logo.png"
-  }, {
-    id: "2",
-    name: "Zara",
-    imgUrl: "./Assets/Zara-Logo.png"
-  }, {
-    id: "3",
-    name: "Zara",
-    imgUrl: "./Assets/Zara-Logo.png"
-  }, {
-    id: "4",
-    name: "Zara",
-    imgUrl: "./Assets/Zara-Logo.png"
-  }, {
-    id: "5",
-    name: "Zara",
-    imgUrl: "./Assets/Zara-Logo.png"
-  }, {
-    id: "6",
-    name: "Zara",
-    imgUrl: "./Assets/Zara-Logo.png"
-  }
-]
+
 function Home() {
+  const [brands, setBrands] = useState();
+
+    useEffect(() => {
+        const fetchDataAsync = async () => {
+            try {
+                const result = await fetchData(`https://store-osn9.onrender.com/brands`);
+                setBrands(result);
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        fetchDataAsync();
+    }, [])
+
   return (
     <div>
       <HeroSection />
       <NewArrivals products={products} />
       <HandPicked headLine="Handpicked Collections" collections={collections} />
-      <ShopByBrand brands={brands} />
+      <ShopByBrand brands={brands} linkTovalue={''} />
       <Banner fullWidthCardText={'Limited edition products'} fullWidthCardLinkTo={'/products/limited'} halfWidthCard1Text={'15% off and more!'} halfWidthCard1LinkTo={''} halfWidthCard2Text={'Popular in the community!'} halfWidthCard2LinkTo={'/products/popular'}/>
     </div>
   );
