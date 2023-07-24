@@ -17,7 +17,7 @@ function HandPicked({ headLine, collections }) {
             width: '100%',
             height: 'auto'
         }}>
-            <Typography mb={2} variant="body1" comp onent="div" sx={{
+            <Typography mb={2} variant="body1" component="div" sx={{
                 color: "bright.main",
                 fontWeight: "fontWeightMedium",
                 fontSize: { xs: "1rem", sm: "1.5rem", md: "2rem", lg: "2.5rem" },
