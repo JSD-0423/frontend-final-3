@@ -5,6 +5,7 @@ import RootLayout from "./Layouts/RootLayout";
 import Home from "./Pages/Home/Home";
 import React from 'react';
 import Category from './Pages/Category/Category';
+import {SignupPage} from './Pages/Signup';
 
 
 const routes = createBrowserRouter(
@@ -12,6 +13,7 @@ const routes = createBrowserRouter(
         <Route path="/" element={<RootLayout/>}>
             <Route path="/" element={<Home/>}/>
             <Route path='/products/:category' element={<Category/>}/>
+            <Route path='/signup' element={<SignupPage/>}/>
         </Route>
     )
 );
