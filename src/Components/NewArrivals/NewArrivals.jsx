@@ -7,10 +7,8 @@ import { Box } from '@mui/material';
 
 export default function NewArrivals({ products }) {
   return (
-    <TitledContainerWithButton containerTitle="New Arrivals" buttonTitle={"View All"} >
-      <Box>
-        
-
+    <TitledContainerWithButton containerTitle="New Arrivals" buttonTitle={"View All"} routePath={'/products/new'} >
+   
       <CardsCarousel>
         {products.map((product) => (<Box key={product.id} sx={
           {
@@ -21,9 +19,9 @@ export default function NewArrivals({ products }) {
               md: "20%",
             },
           }
-        }><ProductCard product={product} isDetailed={false}></ProductCard></Box>))}
+        }><ProductCard product={product} ></ProductCard></Box>))}
       </CardsCarousel>
-      </Box>
+
     </TitledContainerWithButton>
   )
 }
