@@ -3,6 +3,7 @@ import React from 'react'
 import BannerCard from '../Cards/BannerCard/BannerCard'
 import RoundedArrowButton from '../Buttons/RoundedArrowButton/RoundedArrowButton'
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 function Banner({ fullWidthCardText, halfWidthCard1Text, halfWidthCard2Text }) {
   return (
@@ -23,7 +24,9 @@ function Banner({ fullWidthCardText, halfWidthCard1Text, halfWidthCard2Text }) {
               }}>
                 {fullWidthCardText}
               </Typography>
+            <Link to='/products/limited' style={{textDecoration: 'none'}}>
               <RoundedArrowButton backgroundColor='rgba(151, 69, 31, 0.14)' color='rust.main' justifyContent='start'/>
+            </Link>
             </Container>
           </BannerCard>
         </Grid>
@@ -42,7 +45,9 @@ function Banner({ fullWidthCardText, halfWidthCard1Text, halfWidthCard2Text }) {
               }}>
                 {halfWidthCard1Text}
               </Typography>
-              <RoundedArrowButton backgroundColor='rgba(255, 255, 255, 0.50)' color='maroon.main' justifyContent='end' />
+              <Link to='/products/limited' style={{textDecoration: 'none'}}>
+              <RoundedArrowButton backgroundColor='rgba(151, 69, 31, 0.14)' color='rust.main' justifyContent='start'/>
+            </Link>
             </Container>
           </BannerCard>
         </Grid>
@@ -61,7 +66,9 @@ function Banner({ fullWidthCardText, halfWidthCard1Text, halfWidthCard2Text }) {
               }}>
                 {halfWidthCard2Text}
               </Typography>
-              <RoundedArrowButton backgroundColor='rgba(23, 73, 77, 0.16)' color='primary.main' justifyContent='end' />
+              <Link to='/products/limited' style={{textDecoration: 'none'}}>
+              <RoundedArrowButton backgroundColor='rgba(151, 69, 31, 0.14)' color='rust.main' justifyContent='start'/>
+            </Link>
             </Container>
           </BannerCard>
         </Grid>

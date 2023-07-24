@@ -6,12 +6,11 @@ const client = axios.create({
 
 
 export const fetchData = async (url) => {
-    try {
-        const response = await client.get(url);
-        return response.data;
-    } catch (error) {
+    return client.get(url).then(response => {
+        return response.data
+    }).catch(error => {
         return error
-    }
+    });
 };
 
 
