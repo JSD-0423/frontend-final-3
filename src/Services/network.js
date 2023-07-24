@@ -1,9 +1,8 @@
 import axios from "axios";
-const baseURL='https://nervous-boa-jersey.cyclic.app'
+const baseURL='https://store-osn9.onrender.com'
 
 const client = axios.create({
     baseURL: baseURL,
-    headers:{"Access-Control-Allow-Origin":"*"}
 });
 
 
