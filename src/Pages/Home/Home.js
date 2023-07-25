@@ -16,36 +16,10 @@ const collections = [
   { id: 4, title: 'Personal Care', imageSrc: 'https://cdn1.img.sputnikarabic.ae/img/103737/41/1037374157_0:100:1921:1180_600x0_80_0_0_5c139c2a519a6740ea979c29e4aa755e.jpg.webp' }
 ]
 
-const brands=[
-  {
-    id:"1",
-    name:"Zara",
-    imgUrl:"./Assets/Zara-Logo.png"
-  },  {
-    id:"2",
-    name:"Zara",
-    imgUrl:"./Assets/Zara-Logo.png"
-  },  {
-    id:"3",
-    name:"Zara",
-    imgUrl:"./Assets/Zara-Logo.png"
-  },  {
-    id:"4",
-    name:"Zara",
-    imgUrl:"./Assets/Zara-Logo.png"
-  }, {
-    id:"5",
-    name:"Zara",
-    imgUrl:"./Assets/Zara-Logo.png"
-  }, {
-    id:"6",
-    name:"Zara",
-    imgUrl:"./Assets/Zara-Logo.png"
-  }
-]
-
 function Home() {
   const [newArrivals,setNewArrivals] =useState([]);
+  const [brands,setBrands] =useState([]);
+
   useEffect(()=>{
     
       const fetchNewArrivals=async()=>{
@@ -58,7 +32,18 @@ function Home() {
       fetchNewArrivals(); 
 
   },[])
+  useEffect(()=>{
+    
+    const fetchBrands=async()=>{
 
+    const response=await fetchData('/brands');
+
+    setBrands(response)
+    }
+
+    fetchBrands(); 
+
+},[])
   return (
     <div>
       <HeroSection/>
