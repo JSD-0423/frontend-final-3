@@ -8,7 +8,7 @@ import { Box, Grid } from '@mui/material';
 export default function ShopByBrand({ brands }) {
   return (
 
-    <TitledContainerWithButton containerTitle="Shop By Brands" buttonTitle={"View all"}>
+    <TitledContainerWithButton containerTitle="Shop By Brands" buttonTitle={"View all"} routePath={'/products/brands'}>
       <Box sx={{
         paddingRight: {
           xs: ".5rem",
