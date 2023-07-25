@@ -10,23 +10,25 @@ import PropTypes from 'prop-types';
 export const ProductCard = ({ product, isDetailed }) => {
     const discountedPrice = (product.price - (product.price * (product.discount / 100))).toFixed(2);
     return (
-        <Card elevation={0}sx={{
-            height:"100%",
-            display:"flex",
-            flexDirection:"column",
-            justifyContent:"space-between",
+        <Card elevation={0} sx={{
+            height: "100%",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+
         }}>
             <Box component={"img"} src={product.productImage[0].src} alt={`${product.productImage[0].alt} logo`} sx={{
                 borderRadius: ".6rem",
                 width: "100%",
-                height:"75%",
+                height: "62%",
                 objectFit: "cover",
-                backgroundColor:"accent.main"
+                backgroundColor: "accent.main",
+                aspectRatio: '1/1'
             }} />
 
 
             <Box component={"section"} sx={{
-                
+
                 display: "flex", flexDirection: "column"
             }}>
                 <Box sx={{
@@ -39,7 +41,8 @@ export const ProductCard = ({ product, isDetailed }) => {
                     <Typography sx={{
                         fontSize: { xs: ".75rem", sm: "1rem", md: "1rem" },
                         color: "dark.main",
-                        fontWeight: "fontWeightMedium"
+                        fontWeight: "fontWeightMedium",
+
                     }}>{product.title}</Typography>
 
                     <Button sx={{
@@ -70,18 +73,23 @@ export const ProductCard = ({ product, isDetailed }) => {
 
                 {isDetailed ?
                     <Box sx={{
-                        display: { xs: "none", sm: "flex" },
+                        display: "flex",
                         alignItems: "center",
-                        gap: "1rem",
+                        gap: "1.3rem",
+                        flexWrap: "nowrap",
+                        textOverflow: "ellipsis"
+                        , overflow: "hidden"
+                        , whiteSpace: "nowrap"
 
                     }}>
                         <Rating value={product.rating} name='Stars' defaultValue={0} precision={.1} size='small' />
                         <Typography color={'primary.main'} sx={{
                             fontSize: {
                                 xs: ".875rem", sm: ".9rem", md: "1.1rem"
-                            },
+                            }, overflow: 'hidden',
+                            textOverflow: 'ellipsis',
                         }}>
-                            {`${product.rating} Ratings`}
+                            {`${45} Ratings`}
                         </Typography>
                     </Box> : null}
 
@@ -95,15 +103,21 @@ export const ProductCard = ({ product, isDetailed }) => {
                         sx={{
                             fontSize: { xs: ".875rem", sm: "1rem", md: "1.1rem" },
                             color: "dark.main",
-                            fontWeight: "fontWeightMedium"
+                            fontWeight: "fontWeightMedium",
+
                         }}>
                         {`$${discountedPrice}`}
                     </Typography>
 
                     {product.discount > 0 ?
                         <Box sx={{
-                            display:"flex",
-                            flexWrap:"wrap"
+                            display: "flex",
+                            alignItems: "center",
+                            gap: ".3rem",
+                            flexWrap: "nowrap",
+                            textOverflow: "ellipsis"
+                            , overflow: "hidden"
+                            , whiteSpace: "nowrap"
                         }}>
                             <Typography sx={{
                                 fontSize: { xs: ".625rem", sm: ".9rem", md: "1rem" },
@@ -118,6 +132,9 @@ export const ProductCard = ({ product, isDetailed }) => {
                                 fontSize: { xs: ".625rem", sm: ".9rem", md: "1rem" },
                                 color: "error.main",
                                 fontWeight: "fontWeightRegular",
+                                overflow: 'hidden',
+                                textOverflow: 'ellipsis',
+
                             }}
                             >
                                 {`%${product.discount} OFF`}
