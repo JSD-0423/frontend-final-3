@@ -7,15 +7,22 @@ export const BrandCard = ({ brand }) => {
     return (
         <Card elevation={0} component={"img"} sx={{
             backgroundColor: 'accent.main',
-            padding: { lg:"1.5rem",md: ".7rem", xs: "0.5rem" },
+            padding: { lg: "1.5rem", md: ".7rem", xs: "0.5rem" },
             objectFit: "contain",
             width: "100%",
             height: "100%",
             borderRadius: ".7rem"
-        }} src={brand.imgUrl} alt={`${brand.name} logo`} >
+        }} src={brand.img} alt={`${brand.name} logo`} >
         </Card>
     )
 }
 BrandCard.propTypes = {
-    brand: PropTypes.object.isRequired
+    brand: PropTypes.PropTypes.shape({
+
+        id: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired,
+        img: PropTypes.string.isRequired,
+        
+    }).isRequired
 }
