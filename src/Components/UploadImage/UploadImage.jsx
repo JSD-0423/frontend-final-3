@@ -40,7 +40,9 @@ const UploadImage = ({
             type: imageFile.type,
             size: imageFile.size,
           },
-          { withCredentials: true }
+          { 
+            withCredentials: true 
+          }
           );
         productImage(res.data.imageUrl);
         setIsLoading(false);

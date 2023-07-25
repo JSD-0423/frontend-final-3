@@ -8,20 +8,21 @@ import "./style.css";
 const UPLOAD_IMAGE = "http://localhost:5000/upload-image";
 
 export const AdminDashbord = () => {
-  const [profileImage, setProfileImage] = useState("");
+  const [productImage, setProductImage] = useState("");
   const [profileImageError, setProfileImageError] = useState("");
 
   return <Box width="100%" sx={{display: "flex", flexDirection: "column", alignItems: "center"}}>
             {profileImageError && <Alert variant='filled' severity='error' sx={{width: "30rem"}}>{profileImageError}</Alert>}
+            {productImage && <Box sx={{width: "15rem"}}><img src={productImage} alt="" style={{objectFit: "cover", width: "15rem"}} /></Box>}
             <Box className="upload-image">
               <UploadImage
                 sx={{ }}
                 Icon={
                   <AddIcon style={{ fontSize: "2rem", strokeWidth: "0.1rem" }} />
                 }
-                setImage={setProfileImage}
+                setImage={setProductImage}
                 setImageError={setProfileImageError}
-                image={profileImage}
+                image={profileImageError}
                 url={UPLOAD_IMAGE}
                 maxSize="1"
               />

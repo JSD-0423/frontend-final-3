@@ -11,6 +11,8 @@ import Home from "./Pages/Home/Home";
 import React from "react";
 import Category from "./Pages/Category/Category";
 import { AdminDashbord } from "./Pages/AdminDashboard/AdminDashboard";
+import { SigninPage } from "./Pages/Signin";
+import { PageNotFound } from "./Pages/PageNotFound";
 
 const routes = createBrowserRouter(
   createRoutesFromElements(
@@ -18,6 +20,8 @@ const routes = createBrowserRouter(
       <Route path="/" element={<Home />} />
       <Route path="/products/:category" element={<Category />} />
       <Route path="/dashboard" element={<AdminDashbord />} />
+      <Route path="/signin" element={<SigninPage />} />
+      <Route path="*" element={<PageNotFound />} />
     </Route>
   )
 );
