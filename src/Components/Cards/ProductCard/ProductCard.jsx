@@ -11,7 +11,7 @@ export const ProductCard = ({ product, isDetailed }) => {
 
     return (
         <Card elevation={0}>
-            <Box component={"img"} src={product.imgUrl} alt={`${product.name} logo`} sx={{
+            <Box component={"img"} src={product.imgUrl ? product.imgUrl : product.productImage[0].src } alt={`${product.name ? product.name :product.productImage[0].alt }`} sx={{
                 borderRadius: ".6rem",
                 width: "100%",
                 objectFit: "cover"
@@ -130,6 +130,7 @@ export const ProductCard = ({ product, isDetailed }) => {
 ProductCard.propTypes = {
     product: PropTypes.shape({
         imgUrl: PropTypes.string,
+        productImage: PropTypes.array,
         brand: PropTypes.string,
         name: PropTypes.string,
         rating: PropTypes.number,
