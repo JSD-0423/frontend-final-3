@@ -5,14 +5,11 @@ import React, {
 import PropTypes from 'prop-types';
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import {TextField, Button, CircularProgress, Box} from "@mui/material";
+import { TextField, Button, CircularProgress, Box } from "@mui/material";
 
 import styles from "./style.module.css";
 
-const SignupForm = ({
-  onFinish,
-  isLoading,
-}) => {
+const SignupForm = ({ onFinish, isLoading, }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
 
@@ -39,12 +36,12 @@ const SignupForm = ({
         })
         .required("This field is required"),
       password: Yup.string()
-        .matches(
-          /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/,
-          "Oops! You need a password longer than 8 characters with numbers and letters."
-        )
-        .min(8, "Password must be at least 8 characters")
-        .required("This field is required"),
+      .required("This field is required"),
+        // .matches(
+        //   /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/,
+        //   "Oops! You need a password longer than 8 characters with numbers and letters."
+        // )
+        // .min(8, "Password must be at least 8 characters")
     }),
     onSubmit: (values) => {
       onFinish(values);
@@ -160,7 +157,7 @@ const SignupForm = ({
         variant="filled"
         size="small"
         fullWidth
-        sx={{my: "0.25rem"}}
+        sx={{ my: "0.25rem" }}
         error={formik.touched.email && Boolean(formik.errors.email)}
         helperText={
           formik.touched.email && Boolean(formik.errors.email) ? (
@@ -179,7 +176,7 @@ const SignupForm = ({
         variant="filled"
         size="small"
         fullWidth
-        sx={{my: "0.25rem"}}
+        sx={{ my: "0.25rem" }}
         error={formik.touched.password && Boolean(formik.errors.password)}
         helperText={
           formik.touched.password && Boolean(formik.errors.password) ? (
@@ -199,7 +196,7 @@ const SignupForm = ({
         {isLoading ? (
           <CircularProgress
             sx={{
-              color: "#F5F5F5",
+              color: "primary.main",
             }}
           />
         ) : (

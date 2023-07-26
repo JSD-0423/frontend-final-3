@@ -2,12 +2,11 @@ import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";
 import Axios from "axios";
 import { Box, Typography, Alert } from '@mui/material'
-
-import SignupForm from "../../Components/SignupForm";
+import SignupForm from "../../Components/SignupForm/SignupForm";
 
 const TITLE = "Signup";
 
-function Signup() {
+export const Signup = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
@@ -44,4 +43,3 @@ function Signup() {
   );
 }
 
-export default Signup;
