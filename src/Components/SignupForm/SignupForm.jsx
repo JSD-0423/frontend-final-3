@@ -36,12 +36,12 @@ const SignupForm = ({ onFinish, isLoading, }) => {
         })
         .required("This field is required"),
       password: Yup.string()
+      .matches(
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]{8,}$/,
+        "Password must be at least 8 characters and include both lowercase and uppercase letters and at least one digit."
+      )
+      .min(8, "Password must be at least 8 characters")
       .required("This field is required"),
-        // .matches(
-        //   /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/,
-        //   "Oops! You need a password longer than 8 characters with numbers and letters."
-        // )
-        // .min(8, "Password must be at least 8 characters")
     }),
     onSubmit: (values) => {
       onFinish(values);
