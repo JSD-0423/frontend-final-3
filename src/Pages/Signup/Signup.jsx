@@ -12,7 +12,6 @@ export const Signup = () => {
   const navigate = useNavigate();
 
   const onFinish = async (userData) => {
-    console.log(userData);
     try {
       setLoading(true);
       setError("");
@@ -24,14 +23,11 @@ export const Signup = () => {
         },
       });
     } catch (err) {
-      console.log(err);
       const e = err.toJSON();
-      console.log(e);
       setError(e.message);
       setLoading(false);
     }
   };
-  console.log(error);
   return (
     <Box width="100%" sx={{display: "flex", flexDirection: "column", alignItems: "center", py: "5rem"}}>
       {error && <Alert severity="error">{error}</Alert>}
