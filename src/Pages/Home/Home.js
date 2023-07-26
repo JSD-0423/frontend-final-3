@@ -158,7 +158,7 @@ function Home() {
       <HeroSection />
       <NewArrivals products={products} />
       <HandPicked headLine="Handpicked Collections" collections={collections} />
-      <ShopByBrand brands={brands} linkTovalue={''} />
+      <ShopByBrand brands={brands} linkToValue={'products/brands/'} />
       <Banner fullWidthCardText={'Limited edition products'} fullWidthCardLinkTo={'/products/limited'} halfWidthCard1Text={'15% off and more!'} halfWidthCard1LinkTo={''} halfWidthCard2Text={'Popular in the community!'} halfWidthCard2LinkTo={'/products/popular'}/>
     </div>
   );

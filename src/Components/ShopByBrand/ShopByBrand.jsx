@@ -6,7 +6,7 @@ import { Box, Grid } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 
-export default function ShopByBrand({ brands }) {
+export default function ShopByBrand({ brands, linkToValue }) {
   return (
 
     <TitledContainerWithButton containerTitle="Shop By Brands" buttonTitle={"View all"}>
@@ -20,7 +20,7 @@ export default function ShopByBrand({ brands }) {
       <Grid container spacing={{ xs: 1, sm: 1, md: 4 }} columns={{ xs: 6, sm: 12 }}>
         {brands ? brands.map((brand) => (
           <Grid item xs={2} md={2} key={brand.id}>
-            <Link to={``} style={{textDecoration: 'none'}}>
+            <Link to={linkToValue+brand.id} style={{textDecoration: 'none'}}>
             <BrandCard brand={brand}></BrandCard>
             </Link>
           </Grid>
@@ -33,5 +33,6 @@ export default function ShopByBrand({ brands }) {
 }
 
 ShopByBrand.propTypes = {
-  brands: PropTypes.array
+  brands: PropTypes.array,
+  linkToValue: PropTypes.string
 }
