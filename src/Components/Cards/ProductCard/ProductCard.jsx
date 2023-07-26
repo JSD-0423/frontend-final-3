@@ -8,10 +8,10 @@ import PropTypes from 'prop-types';
 
 
 export const ProductCard = ({ product, isDetailed }) => {
-
+    console.log(product)
     return (
         <Card elevation={0}>
-            <Box component={"img"} src={product.imgUrl ? product.imgUrl : product.productImage[0].src } alt={`${product.name ? product.name :product.productImage[0].alt }`} sx={{
+            <Box component={"img"} src={product.imgUrl ? product.imgUrl : product.productImage[0].src} alt={`${product.title ? product.title : product.productImage[0].alt}`} sx={{
                 borderRadius: ".6rem",
                 width: "100%",
                 objectFit: "cover"
@@ -34,7 +34,7 @@ export const ProductCard = ({ product, isDetailed }) => {
                         fontSize: { xs: ".75rem", sm: "1rem", md: "1rem" },
                         color: "dark.main",
                         fontWeight: "fontWeightMedium"
-                    }}>{product.name}</Typography>
+                    }}>{product.title}</Typography>
 
                     <Button sx={{
                         minWidth: "0"
@@ -64,9 +64,9 @@ export const ProductCard = ({ product, isDetailed }) => {
 
                 {isDetailed ?
                     <Box sx={{
-                        display: { xs: "none",sm:"flex" },
+                        display: { xs: "none", sm: "flex" },
                         alignItems: "center",
-                        gap: "1rem",    
+                        gap: "1rem",
 
                     }}>
                         <Rating value={product.rating} name='Stars' defaultValue={0} precision={.1} size='small' />
@@ -91,7 +91,7 @@ export const ProductCard = ({ product, isDetailed }) => {
                             color: "dark.main",
                             fontWeight: "fontWeightMedium"
                         }}>
-                        {`$${product.price.current}`}
+                        {`$${product.price}`}
                     </Typography>
                     {isDetailed && product.price.discountPercentage !== 0 ?
                         <>
@@ -102,7 +102,7 @@ export const ProductCard = ({ product, isDetailed }) => {
                                 textDecoration: "line-through"
                             }}
                             >
-                                {`$${product.price.current}`}
+                                {`$${product.price}`}
                             </Typography>
                             <Typography sx={{
                                 fontSize: { xs: ".625rem", sm: ".9rem", md: "1rem" },
@@ -110,7 +110,7 @@ export const ProductCard = ({ product, isDetailed }) => {
                                 fontWeight: "fontWeightRegular",
                             }}
                             >
-                                {`%${product.price.discountPercentage} OFF`}
+                                {`%${product.discount} OFF`}
                             </Typography>
                         </>
 
@@ -132,13 +132,10 @@ ProductCard.propTypes = {
         imgUrl: PropTypes.string,
         productImage: PropTypes.array,
         brand: PropTypes.string,
-        name: PropTypes.string,
+        title: PropTypes.string,
         rating: PropTypes.number,
-        price: PropTypes.shape({
-            current: PropTypes.number,
-            actual: PropTypes.number,
-            discountPercentage: PropTypes.number,
-        })
-    }).isRequired,
+        discount: PropTypes.number,
+        price: PropTypes.number.isRequired,
+    }),
     isDetailed: PropTypes.bool
 }

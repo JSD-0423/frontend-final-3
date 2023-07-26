@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import "./Home.css";
 import HandPicked from "../../Components/HandPicked/HandPicked";
 import NewArrivals from "../../Components/NewArrivals/NewArrivals";
 import ShopByBrand from "../../Components/ShopByBrand/ShopByBrand";
@@ -159,7 +158,7 @@ function Home() {
       <NewArrivals products={products} />
       <HandPicked headLine="Handpicked Collections" collections={collections} />
       <ShopByBrand brands={brands} linkToValue={'products/brands/'} />
-      <Banner fullWidthCardText={'Limited edition products'} fullWidthCardLinkTo={'/products/limited'} halfWidthCard1Text={'15% off and more!'} halfWidthCard1LinkTo={''} halfWidthCard2Text={'Popular in the community!'} halfWidthCard2LinkTo={'/products/popular'}/>
+      <Banner fullWidthCardText={'Limited edition products'} fullWidthCardLinkTo={'/products/limited'} halfWidthCard1Text={'15% off and more!'} halfWidthCard1LinkTo={'products'} halfWidthCard2Text={'Popular in the community!'} halfWidthCard2LinkTo={'/products/popular'}/>
     </div>
   );
 }
