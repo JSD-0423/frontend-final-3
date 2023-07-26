@@ -12,12 +12,15 @@ import React from "react";
 import Category from "./Pages/Category/Category";
 import { SigninPage } from "./Pages/Signin";
 import { PageNotFound } from "./Pages/PageNotFound";
+import {Signup} from './Pages/Signup/Signup';
+
 
 const routes = createBrowserRouter(
     createRoutesFromElements(
-        <Route path="/" element={<RootLayout />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/products/:category" element={<Category />} />
+        <Route path="/" element={<RootLayout/>}>
+            <Route path="/" element={<Home/>}/>
+            <Route path='/products/:category' element={<Category/>}/>
+            <Route path='/signup' element={<Signup/>}/>
             <Route path="/signin" element={<SigninPage />} />
             <Route path="*" element={<PageNotFound/>} />
         </Route>
