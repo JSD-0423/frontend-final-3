@@ -64,7 +64,7 @@ function Home() {
       <HeroSection/>
       <NewArrivals products={newArrivals}/>
       <HandPicked headLine="Handpicked Collections" collections={collections} />
-      <ShopByBrand brands={brands} />
+      <ShopByBrand brands={brands}/>
       <Banner fullWidthCardText={'Limited edition products'} halfWidthCard1Text={'15% off and more!'} halfWidthCard2Text={'Popular in the community!'}/>
     </div>
   );

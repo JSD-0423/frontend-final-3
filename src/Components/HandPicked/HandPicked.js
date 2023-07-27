@@ -11,7 +11,7 @@ HandPicked.propTypes = {
 function HandPicked({ headLine, collections }) {
 
     return (
-        <Box sx={{
+        <Box id="Featured" sx={{
             p: 2,
             backgroundColor: "primary.main",
             width: '100%',
