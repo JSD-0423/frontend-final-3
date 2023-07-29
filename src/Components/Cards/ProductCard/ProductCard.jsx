@@ -75,7 +75,11 @@ export const ProductCard = ({ product, isDetailed }) => {
                     <Box sx={{
                         display: "flex",
                         alignItems: "center",
-                        gap: "1.3rem",
+                        gap: { xs: "0", sm: "1.3rem" },
+                        justifyContent: {
+                            xs: "space-between",
+                            sm: "normal"
+                        },
                         flexWrap: "nowrap",
                         textOverflow: "ellipsis"
                         , overflow: "hidden"
