@@ -3,14 +3,86 @@ import { TitledContainerWithButton } from "../TitledContainerWithButton/TitledCo
 import { CardsCarousel } from "../Cards/CardsCarousel/CardsCarousel";
 import PropTypes from 'prop-types';
 import { ProductCard } from '../Cards/ProductCard/ProductCard';
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
+import { fetchData } from "../../Services/network";
+import { useEffect, useState } from "react";
 
-export default function NewArrivals({ products }) {
+export default function NewArrivals() {
+
+  const [newArrivals, setNewArrivals] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+  useEffect(() => {
+
+    const fetchNewArrivals = async () => {
+      setLoading(true)
+      try {
+        const response = await fetchData('/products/new');
+        setNewArrivals(response)
+      } catch (error) {
+        setError(error.message);
+      }
+      setLoading(false);
+    }
+
+    fetchNewArrivals();
+
+  }, [])
   return (
     <TitledContainerWithButton containerTitle="New Arrivals" buttonTitle={"View All"} routePath={'/products/new'} >
-   
+
       <CardsCarousel>
-        {products.map((product) => (<Box key={product.id} sx={
+        {error ? (
+          <Box sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center", height: "50vh",
+            width: "100%"
+          }}>
+            <Typography
+              sx={{
+                color: "primary.main",
+                fontSize: {
+                  xs: '1rem',
+                  sm: "2rem"
+                },
+                fontWeight: "fontWeightLabelSmall"
+              }}
+            >
+              {error}
+            </Typography></Box>
+        ) : loading ? (
+          <Box sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            width: "100%"
+          }}>
+            <Typography
+              sx={{
+                color: "primary.main",
+                fontSize: {
+                  xs: '1rem',
+                  sm: "2rem"
+                },
+                fontWeight: "fontWeightLabelSmall"
+              }}
+            >
+              Loading...
+            </Typography>
+          </Box>
+        ) : newArrivals.length === 0 ? <Typography
+          sx={{
+            color: "primary.main",
+            fontSize: {
+              xs: '1rem',
+              sm: "2rem"
+            },
+            fontWeight: "fontWeightLabelSmall"
+          }}
+        >
+          No Products Found
+        </Typography> : newArrivals.map((product) => (<Box key={product.id} sx={
           {
             flexShrink: 0,
             width: {
@@ -19,7 +91,8 @@ export default function NewArrivals({ products }) {
               md: "20%",
             },
           }
-        }><ProductCard product={product} ></ProductCard></Box>))}
+        }><ProductCard product={product} ></ProductCard></Box>))
+        }
       </CardsCarousel>
 
     </TitledContainerWithButton>

@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./Home.css";
 import HandPicked from "../../Components/HandPicked/HandPicked";
 import NewArrivals from "../../Components/NewArrivals/NewArrivals";
 import ShopByBrand from "../../Components/ShopByBrand/ShopByBrand";
 import HeroSection from "../../Components/HeroSection/HeroSection";
 import Banner from "../../Components/Banner/Banner";
-import { fetchData } from "../../Services/network";
+
 
 
 //Dummy data
@@ -45,24 +45,12 @@ const brands=[
 ]
 
 function Home() {
-  const [newArrivals,setNewArrivals] =useState([]);
-  useEffect(()=>{
-    
-      const fetchNewArrivals=async()=>{
 
-      const response=await fetchData('/products/new');
-
-      setNewArrivals(response)
-      }
-
-      fetchNewArrivals(); 
-
-  },[])
 
   return (
     <div>
       <HeroSection/>
-      <NewArrivals products={newArrivals}/>
+      <NewArrivals/>
       <HandPicked headLine="Handpicked Collections" collections={collections} />
       <ShopByBrand brands={brands}/>
       <Banner fullWidthCardText={'Limited edition products'} halfWidthCard1Text={'15% off and more!'} halfWidthCard2Text={'Popular in the community!'}/>
