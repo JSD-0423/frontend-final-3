@@ -1,22 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Box, Grid, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
 const StyledButton = styled('button')(({ theme }) => ({
     ":focus": {
         backgroundColor: theme.palette.primary.main,
-        color: theme.palette.bright.main
+        color: theme.palette.bright.main,
+        outline: 'none',
     },
+    textAlign:'center',
     backgroundColor: 'transparent',
     border: 'none',
     borderRadius: '8px',
     padding: '6px 18px',
+    width: '100%',
     color: theme.palette.lowEmphasis.main,
     fontWeight: theme.typography.fontWeightMedium
 }));
 
 function Product() {
     const [displayText, setDisplayText] = useState('Product Description');
+    const buttonRef = useRef(null);
 
     // Define the content to be displayed when each button is clicked
     const buttonContent = {
@@ -29,6 +33,12 @@ function Product() {
     const handleButtonClick = (text) => {
         setDisplayText(buttonContent[text]);
     };
+
+    useEffect(() => {
+        // Focus the button when the page loads
+        buttonRef.current.focus();
+    }, []);
+
     return (
         <Box sx={{
             p: 2
@@ -40,13 +50,16 @@ function Product() {
                 pb: 1,
                 justifyContent: { xs: 'center', sm: 'start' }
             }}>
-                <Grid item lg={2}>
-                    <StyledButton onClick={() => handleButtonClick('Product Description')}>Product Description</StyledButton>
+                <Grid item xs={12} sm={4} md={3} lg={2} xl={1} sx={{
+                    // justifyContent: 'center'
+                    textAlign: 'center'
+                }}>
+                    <StyledButton onClick={() => handleButtonClick('Product Description')} ref={buttonRef} autofocus>Product Description</StyledButton>
                 </Grid>
-                <Grid item lg={2}>
+                <Grid item xs={12} sm={4} md={3} lg={2} xl={1}>
                     <StyledButton onClick={() => handleButtonClick('Related Products')}>Related Products</StyledButton>
                 </Grid>
-                <Grid item lg={2}>
+                <Grid item xs={12} sm={4} md={2} lg={2} xl={1}>
                     <StyledButton onClick={() => handleButtonClick('Ratings and Reviews')}>Ratings and Reviews</StyledButton>
                 </Grid>
             </Grid>
