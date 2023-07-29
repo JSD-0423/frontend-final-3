@@ -22,12 +22,12 @@ function Category() {
             try {
                 const result = await fetchData(`/products/${targetAPI}`);
                 setProducts(result);
-                setLoading(false);
 
             } catch (error) {
-                setLoading(false)
                 setError(error.message);
             }
+            setLoading(false);
+
         }
         fetchDataAsync()
 
