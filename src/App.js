@@ -20,7 +20,7 @@ const routes = createBrowserRouter(
         <Route path="/" element={<RootLayout/>}>
             <Route path="/" element={<Home/>}/>
             <Route path='/products/:targetAPI' element={<Category/>}/>
-            <Route path='/product/:id' element={<Product/>}/>
+            <Route path='/product/:categoryId' element={<Product/>}/>
             <Route path='/signup' element={<Signup/>}/>
             <Route path="/signin" element={<SigninPage />} />
             <Route path="*" element={<PageNotFound/>} />
