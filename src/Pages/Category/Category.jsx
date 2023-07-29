@@ -90,7 +90,12 @@ function Category() {
                         Loading...
                     </Typography>
                 </Box>
-            ) : products.length === 0 ? <Typography
+            ) : products.length === 0 ? <Box sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center", height: "20vh",
+                width: "100%"
+            }}><Typography
                 sx={{
                     color: "primary.main",
                     fontSize: {
@@ -100,8 +105,8 @@ function Category() {
                     fontWeight: "fontWeightLabelSmall"
                 }}
             >
-                No Products Found
-            </Typography> : (
+                    No Products Found
+                </Typography> </Box> : (
 
                 <Box sx={{ flexGrow: 1, paddingInline: "1rem", marginBlock: "2rem" }} >
                     <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 6, md: 12, lg: 15 }}>

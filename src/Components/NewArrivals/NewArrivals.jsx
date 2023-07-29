@@ -36,7 +36,7 @@ export default function NewArrivals() {
           <Box sx={{
             display: "flex",
             justifyContent: "center",
-            alignItems: "center", height: "50vh",
+            alignItems: "center", height: "20vh",
             width: "100%"
           }}>
             <Typography
@@ -54,7 +54,7 @@ export default function NewArrivals() {
         ) : loading ? (
           <Box sx={{
             display: "flex",
-            justifyContent: "center",
+            justifyContent: "center", height: "20vh",
             alignItems: "center",
             width: "100%"
           }}>
@@ -71,18 +71,25 @@ export default function NewArrivals() {
               Loading...
             </Typography>
           </Box>
-        ) : newArrivals.length === 0 ? <Typography
-          sx={{
-            color: "primary.main",
-            fontSize: {
-              xs: '1rem',
-              sm: "2rem"
-            },
-            fontWeight: "fontWeightLabelSmall"
-          }}
-        >
-          No Products Found
-        </Typography> : newArrivals.map((product) => (<Box key={product.id} sx={
+        ) : newArrivals.length === 0 ? <Box sx={{
+          display: "flex",
+          justifyContent: "center", height: "20vh",
+          alignItems: "center",
+          width: "100%"
+        }}>
+          <Typography
+            sx={{
+              color: "primary.main",
+              fontSize: {
+                xs: '1rem',
+                sm: "2rem"
+              },
+              fontWeight: "fontWeightLabelSmall"
+            }}
+          >
+            No Products Found
+          </Typography>
+        </Box> : newArrivals.map((product) => (<Box key={product.id} sx={
           {
             flexShrink: 0,
             width: {
