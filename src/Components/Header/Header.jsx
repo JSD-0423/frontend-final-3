@@ -12,11 +12,36 @@ import SearchIcon from '@mui/icons-material/Search';
 import MenuIcon from '@mui/icons-material/Menu';
 import { InputWithIcon } from '../InputWithIcon/InputWithIcon';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-const dummyCategories = ['HandBags', 'Watches', 'Skincare', 'Jewllery', 'Apparels'];
+import { Link } from 'react-router-dom';
+const categories = [{
+  "id": 1,
+  "name": "Phones",
+},
+{
+  "id": 2,
+  "name": "Laptops",
+},
+{
+  "id": 3,
+  "name": "Mobile accessories",
+},
+{
+  "id": 4,
+  "name": "Tablets",
+},
+{
+  "id": 5,
+  "name": "Shoes",
+},
+{
+  "id": 6,
+  "name": "T-shirts",
+}];
 
 
 
-export const Header = ({pageTitle, categories }) => {
+export const Header = ({ pageTitle }) => {
+
   const [anchorElNav, setAnchorElNav] = useState(null);
 
   const handleOpenNavMenu = (event) => {
@@ -42,7 +67,7 @@ export const Header = ({pageTitle, categories }) => {
       }
     }}>
 
-      <Box
+      <Link to={'/'}> <Box
         sx={{
           display: {
             xs: 'none',
@@ -50,8 +75,8 @@ export const Header = ({pageTitle, categories }) => {
           },
         }}
       >
-        <img src="../icons/logo.svg" alt="Coral logo" />
-      </Box>
+        <img src="/icons/logo.svg" alt="Coral logo" />
+      </Box></Link>
 
       <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
         <IconButton
@@ -83,13 +108,13 @@ export const Header = ({pageTitle, categories }) => {
           }}
         >
           {categories.map((category) => (
-            <MenuItem key={category} onClick={handleCloseNavMenu}>
-              <Typography textAlign="center" color={'primary'}>{category}</Typography>
+            <MenuItem key={category.id} onClick={handleCloseNavMenu}>
+              <Typography textAlign="center" color={'primary.main'}>{category.name}</Typography>
             </MenuItem>
           ))}
         </Menu>
       </Box>
-    {pageTitle?      <Typography
+      {pageTitle ? <Typography
         variant="h6"
         noWrap
         component="div"
@@ -101,17 +126,18 @@ export const Header = ({pageTitle, categories }) => {
         }}
       >
         {pageTitle}
-      </Typography>:null}
+      </Typography> : null}
 
 
       <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, marginLeft: '1rem' }}>
         {categories.map((category) => (
-          <Button
-            key={category}
-            sx={{ my: 2, color: 'primary.main', display: 'block', fontSize: '0.875rem', fontWeight: '500', textTransform: "none" }}
-          >
-            {category}
-          </Button>
+          <Link key={category.id} to={`/products/categories/${category.id}`}>
+            <Button
+              sx={{ my: 2, color: 'primary.main', display: 'block', fontSize: '1vw', fontWeight: 'fontWeightMedium', textTransform: "none" }}
+            >
+              {category.name}
+            </Button>
+          </Link>
         ))}
       </Box>
 
@@ -132,24 +158,22 @@ export const Header = ({pageTitle, categories }) => {
 
       <Box sx={{ display: { xs: 'flex' } }}>
         <IconButton size="large" aria-label="show more" aria-haspopup="true" >
-          <img src="../icons/profile.svg" alt="Cart" />
+          <img src="/icons/profile.svg" alt="Cart" />
         </IconButton>
       </Box>
+
       <Box sx={{ display: { xs: 'flex' } }}>
         <IconButton size="large" aria-label="show more" aria-haspopup="true" >
-          <img src="../icons/cart.svg" alt="Cart" />
+          <img src="/icons/cart.svg" alt="Cart" />
         </IconButton>
       </Box>
+
     </Box>
 
   );
 }
 
 Header.propTypes = {
-  categories: PropTypes.array.isRequired,
   pageTitle: PropTypes.string,
 }
 
-Header.defaultProps = {
-  categories: dummyCategories,
-};
