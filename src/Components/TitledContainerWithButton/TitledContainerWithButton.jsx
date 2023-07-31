@@ -2,7 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types';
 import { Box, Typography, Button } from '@mui/material';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-export const TitledContainerWithButton = ({ containerTitle, buttonTitle, children }) => {
+import { Link } from 'react-router-dom';
+export const TitledContainerWithButton = ({ containerTitle, buttonTitle,routePath, children }) => {
 
   return (
 
@@ -34,14 +35,14 @@ export const TitledContainerWithButton = ({ containerTitle, buttonTitle, childre
 
         {
           (buttonTitle) ?
-            <Box>
+            <Link to={routePath}>
               <Button variant='text' sx={{
                 fontWeight: "fontWeightMedium",
                 fontSize: { xs: " 0.875rem", sm: ".9rem", md: "1rem" }
               }}>{buttonTitle}
                 <NavigateNextIcon />
               </Button>
-            </Box>
+            </Link>
 
 
             : null
@@ -61,4 +62,5 @@ TitledContainerWithButton.propTypes = {
   children: PropTypes.node.isRequired,
   containerTitle: PropTypes.string.isRequired,
   buttonTitle: PropTypes.string,
+  routePath:PropTypes.string,
 }
