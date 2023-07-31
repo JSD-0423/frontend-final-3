@@ -7,35 +7,49 @@ import { fetchData } from "../../Services/network";
 
 
 function Category() {
-    const { targetAPI, targetID } = useParams();
+    const { targetAPI,categoryID} = useParams();
+    const [subTitle, setSubTitle] = useState("");
     const [products, setProducts] = useState();
-    const APIUrl = targetID ? `https://store-osn9.onrender.com/products/${targetAPI}/${targetID}` : `https://store-osn9.onrender.com/products/${targetAPI}`;
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
 
-
     useEffect(() => {
         const fetchDataAsync = async () => {
+            let result;
+            let categories;
             setLoading(true);
             try {
-                const result = await fetchData(APIUrl);
+                if (targetAPI) {
+                    result = await fetchData(`/products/${targetAPI}`);
 
+                }
+
+                if (categoryID) {
+                    categories = await fetchData('/categories')
+                    result = await fetchData(`/products/categories/${categoryID}`);
+                }
+                setSubTitle(targetAPI || categories[categoryID - 1].name)
                 setProducts(result);
 
+
+
             } catch (error) {
+
                 setError(error.message);
+
             }
+
             setLoading(false);
 
         }
         fetchDataAsync()
 
-    }, [])
+    }, [categoryID])
 
     return (
         <>
 
-            <BreadCrumb MainTitle={"Home"} SubTitle={targetAPI} />
+            <BreadCrumb MainTitle={"Home"} SubTitle={subTitle} />
             <Typography sx={{
                 fontSize: {
                     xs: "1.5rem",
