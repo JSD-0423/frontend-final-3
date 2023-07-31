@@ -12,7 +12,7 @@ export const BrandCard = ({ brand }) => {
             width: "100%",
             height: "100%",
             borderRadius: ".7rem"
-        }} src={brand.imgUrl} alt={`${brand.name} logo`} >
+        }} src={brand.img} alt={`${brand.name} logo`} >
         </Card>
     )
 }

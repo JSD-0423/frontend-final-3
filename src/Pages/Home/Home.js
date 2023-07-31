@@ -1,12 +1,10 @@
-import React from "react";
+import React from 'react'
 import "./Home.css";
 import HandPicked from "../../Components/HandPicked/HandPicked";
 import NewArrivals from "../../Components/NewArrivals/NewArrivals";
 import ShopByBrand from "../../Components/ShopByBrand/ShopByBrand";
 import HeroSection from "../../Components/HeroSection/HeroSection";
 import Banner from "../../Components/Banner/Banner";
-
-
 
 //Dummy data
 const collections = [
@@ -16,44 +14,16 @@ const collections = [
   { id: 4, title: 'Personal Care', imageSrc: 'https://cdn1.img.sputnikarabic.ae/img/103737/41/1037374157_0:100:1921:1180_600x0_80_0_0_5c139c2a519a6740ea979c29e4aa755e.jpg.webp' }
 ]
 
-const brands=[
-  {
-    id: "1",
-    name: "Zara",
-    imgUrl: "./Assets/Zara-Logo.png"
-  }, {
-    id: "2",
-    name: "Zara",
-    imgUrl: "./Assets/Zara-Logo.png"
-  }, {
-    id: "3",
-    name: "Zara",
-    imgUrl: "./Assets/Zara-Logo.png"
-  }, {
-    id: "4",
-    name: "Zara",
-    imgUrl: "./Assets/Zara-Logo.png"
-  }, {
-    id: "5",
-    name: "Zara",
-    imgUrl: "./Assets/Zara-Logo.png"
-  }, {
-    id: "6",
-    name: "Zara",
-    imgUrl: "./Assets/Zara-Logo.png"
-  }
-]
 
 function Home() {
 
-
   return (
     <div>
-      <HeroSection/>
-      <NewArrivals/>
+      <HeroSection />
+      <NewArrivals />
       <HandPicked headLine="Handpicked Collections" collections={collections} />
-      <ShopByBrand brands={brands} />
-      <Banner fullWidthCardText={'Limited edition products'} fullWidthCardLinkTo={'/products/limited'} halfWidthCard1Text={'15% off and more!'} halfWidthCard1LinkTo={''} halfWidthCard2Text={'Popular in the community!'} halfWidthCard2LinkTo={'/products/popular'}/>
+      <ShopByBrand linkToValue={''} />
+      <Banner fullWidthCardText={'Limited edition products'} fullWidthCardLinkTo={'/products/limited'} halfWidthCard1Text={'15% off and more!'} halfWidthCard1LinkTo={''} halfWidthCard2Text={'Popular in the community!'} halfWidthCard2LinkTo={'/products/popular'} />
     </div>
   );
 }

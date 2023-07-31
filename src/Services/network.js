@@ -8,6 +8,7 @@ const client = axios.create({
 
 export const fetchData = async (url) => {
 
+
         const response = await client.get(url);
         return response.data;
 
