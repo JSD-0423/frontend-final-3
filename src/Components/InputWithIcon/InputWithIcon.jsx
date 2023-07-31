@@ -19,7 +19,7 @@ export const InputWithIcon = ({ placeholder }) => {
         inputProps={{
           'aria-label': 'search', sx: {
             "&::placeholder": {
-              fontSize:{xs:".8rem",md:"1rem"}
+              fontSize: { sm: "1.7vw", md: "1vw", lg: ".8vw", xl: ".6vw" }
             }
           }
         }}
