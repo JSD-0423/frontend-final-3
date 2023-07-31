@@ -3,8 +3,9 @@ import React from 'react'
 import BannerCard from '../Cards/BannerCard/BannerCard'
 import RoundedArrowButton from '../Buttons/RoundedArrowButton/RoundedArrowButton'
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
-function Banner({ fullWidthCardText, halfWidthCard1Text, halfWidthCard2Text }) {
+function Banner({ fullWidthCardText, fullWidthCardLinkTo, halfWidthCard1Text, halfWidthCard1LinkTo, halfWidthCard2Text,halfWidthCard2LinkTo }) {
   return (
     <Box p={2} id="Trendy">
       <Grid container spacing={{ xs: '0.8125rem', md: '1.5rem', lg: '1.85rem' }}>
@@ -23,7 +24,9 @@ function Banner({ fullWidthCardText, halfWidthCard1Text, halfWidthCard2Text }) {
               }}>
                 {fullWidthCardText}
               </Typography>
+            <Link to={fullWidthCardLinkTo} style={{textDecoration: 'none'}}>
               <RoundedArrowButton backgroundColor='rgba(151, 69, 31, 0.14)' color='rust.main' justifyContent='start'/>
+            </Link>
             </Container>
           </BannerCard>
         </Grid>
@@ -42,7 +45,9 @@ function Banner({ fullWidthCardText, halfWidthCard1Text, halfWidthCard2Text }) {
               }}>
                 {halfWidthCard1Text}
               </Typography>
-              <RoundedArrowButton backgroundColor='rgba(255, 255, 255, 0.50)' color='maroon.main' justifyContent='end' />
+              <Link to={halfWidthCard1LinkTo} style={{textDecoration: 'none'}}>
+              <RoundedArrowButton backgroundColor='rgba(255, 255, 255, 0.50)' color='maroon.main' justifyContent='start'/>
+            </Link>
             </Container>
           </BannerCard>
         </Grid>
@@ -61,7 +66,9 @@ function Banner({ fullWidthCardText, halfWidthCard1Text, halfWidthCard2Text }) {
               }}>
                 {halfWidthCard2Text}
               </Typography>
-              <RoundedArrowButton backgroundColor='rgba(23, 73, 77, 0.16)' color='primary.main' justifyContent='end' />
+              <Link to={halfWidthCard2LinkTo} style={{textDecoration: 'none'}}>
+              <RoundedArrowButton backgroundColor='rgba(23, 73, 77, 0.16)' color='primary.main' justifyContent='start'/>
+            </Link>
             </Container>
           </BannerCard>
         </Grid>
@@ -72,8 +79,11 @@ function Banner({ fullWidthCardText, halfWidthCard1Text, halfWidthCard2Text }) {
 
 Banner.propTypes = {
   fullWidthCardText: PropTypes.string.isRequired,
+  fullWidthCardLinkTo: PropTypes.string.isRequired,
   halfWidthCard1Text: PropTypes.string.isRequired,
+  halfWidthCard1LinkTo: PropTypes.string.isRequired,
   halfWidthCard2Text: PropTypes.string.isRequired,
+  halfWidthCard2LinkTo: PropTypes.string.isRequired
 }
 
 export default Banner

@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { ProductCard } from '../../Components/Cards/ProductCard/ProductCard';
-import { useParams } from "react-router-dom";
+import { useParams} from "react-router-dom";
 import { Box, Grid, Typography } from '@mui/material';
 import BreadCrumb from '../../Components/BreadCrumb/BreadCrumb';
 import { fetchData } from "../../Services/network";
-
-
 
 
 function Category() {
