@@ -1,0 +1,16 @@
+.link p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: darkslateblue;
+  border-bottom: 4px solid rgb(44, 32, 120);
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  color: white;
+  transition: all 0.250s;
+}
+
+.link:hover p {
+  background-color: rgb(57, 44, 138);
+  transition: all 0.250s;
+}

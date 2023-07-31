@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 function Banner({ fullWidthCardText, fullWidthCardLinkTo, halfWidthCard1Text, halfWidthCard1LinkTo, halfWidthCard2Text,halfWidthCard2LinkTo }) {
   return (
-    <Box p={2}>
+    <Box p={2} id="Trendy">
       <Grid container spacing={{ xs: '0.8125rem', md: '1.5rem', lg: '1.85rem' }}>
         <Grid item xs={12}>
           <BannerCard background={{ xs: 'url("./Assets/makeUpMobile.jpg")', sm: 'url("./Assets/makeUpDeskTop.jpg")' }} align='right'>

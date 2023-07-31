@@ -12,7 +12,7 @@ import TwitterIcon from '../TwitterIcon/TwitterIcon';
 import YoutubeIcon from '../YoutubeIcon/YoutubeIcon';
 
 const categories = { listMainText: 'Shop By Category', list: ['HandBags', 'Watches', 'Skincare', 'Jewllery', 'Apparels', 'HandBags', 'Watches'] };
-const products = { listMainText: 'Shop By Product', list: ['HandBags', 'Watches', 'Skincare'] };
+const products = { listMainText: 'Shop By Product', list: ['Featured', 'Brands', 'Trendy'] };
 const socialMedia = [{ Icon: FacebookIcon, Link: 'www.facebook.com' }, { Icon: InstaIcon, Link: 'www.instagram.com' }, { Icon: TwitterIcon, Link: 'www.twitter.com' }, { Icon: YoutubeIcon, Link: 'www.youtube.com' }]
 
 function Footer({ location, rights, categories, products, socialMedia }) {

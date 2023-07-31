@@ -136,7 +136,7 @@ const products = [
 
   }
 ];
-const brands = [
+const brands=[
   {
     id: "1",
     name: "Zara",
@@ -163,7 +163,10 @@ const brands = [
     imgUrl: "./Assets/Zara-Logo.png"
   }
 ]
+
 function Home() {
+
+
   return (
     <div>
       <HeroSection />
