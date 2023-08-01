@@ -41,12 +41,8 @@ export const ProductCard = ({ product, isDetailed }) => {
                     <Typography sx={{
                         fontSize: { xs: ".75rem", sm: "1rem", md: "1rem" },
                         color: "dark.main",
-<<<<<<< HEAD
-                        fontWeight: "fontWeightMedium"
-=======
                         fontWeight: "fontWeightMedium",
 
->>>>>>> handelaipreq/categorypage
                     }}>{product.title}</Typography>
 
                     <Button sx={{
@@ -77,11 +73,6 @@ export const ProductCard = ({ product, isDetailed }) => {
 
                 {isDetailed ?
                     <Box sx={{
-<<<<<<< HEAD
-                        display: { xs: "none", sm: "flex" },
-                        alignItems: "center",
-                        gap: "1rem",
-=======
                         display: "flex",
                         alignItems: "center",
                         gap: { xs: "0", sm: "1.3rem" },
@@ -93,7 +84,6 @@ export const ProductCard = ({ product, isDetailed }) => {
                         textOverflow: "ellipsis"
                         , overflow: "hidden"
                         , whiteSpace: "nowrap"
->>>>>>> handelaipreq/categorypage
 
                     }}>
                         <Rating value={product.rating} name='Stars' defaultValue={0} precision={.1} size='small' />
@@ -120,11 +110,7 @@ export const ProductCard = ({ product, isDetailed }) => {
                             fontWeight: "fontWeightMedium",
 
                         }}>
-<<<<<<< HEAD
-                        {`$${product.price}`}
-=======
                         {`$${discountedPrice}`}
->>>>>>> handelaipreq/categorypage
                     </Typography>
 
                     {product.discount > 0 ?
@@ -171,16 +157,6 @@ export const ProductCard = ({ product, isDetailed }) => {
 
 ProductCard.propTypes = {
     product: PropTypes.shape({
-<<<<<<< HEAD
-        imgUrl: PropTypes.string,
-        productImage: PropTypes.array,
-        brand: PropTypes.string,
-        title: PropTypes.string,
-        rating: PropTypes.number,
-        discount: PropTypes.number,
-        price: PropTypes.number.isRequired,
-    }),
-=======
         id: PropTypes.number.isRequired,
         title: PropTypes.string.isRequired,
         sub_title: PropTypes.string.isRequired,
@@ -202,6 +178,5 @@ ProductCard.propTypes = {
             })
         ).isRequired,
     }).isRequired,
->>>>>>> handelaipreq/categorypage
     isDetailed: PropTypes.bool
 }
