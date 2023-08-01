@@ -1,46 +1,130 @@
 import React, { useEffect, useState } from 'react'
 import { ProductCard } from '../../Components/Cards/ProductCard/ProductCard';
 import { useParams } from "react-router-dom";
-import PropTypes from 'prop-types';
-import { Box, Grid } from '@mui/material';
+import { Box, Grid, Typography } from '@mui/material';
 import BreadCrumb from '../../Components/BreadCrumb/BreadCrumb';
 import { fetchData } from "../../Services/network";
 
+
 function Category() {
     const { targetAPI, targetID } = useParams();
-    const [products, setProducts] = useState([]);
-    const APIUrl = targetID? `https://store-osn9.onrender.com/products/${targetAPI}/${targetID}` : targetAPI? `https://store-osn9.onrender.com/products/${targetAPI}` :'https://store-osn9.onrender.com/products'; 
+    const APIUrl = targetID ? `https://store-osn9.onrender.com/products/${targetAPI}/${targetID}` : targetAPI === 'discount'? 'https://store-osn9.onrender.com/products/' : `https://store-osn9.onrender.com/products/${targetAPI}`;
+    const [subTitle, setSubTitle] = useState("");
+    const [products, setProducts] = useState();
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState('');
+    const params = targetAPI === 'discount' ? {'discount' : 15} : null;
 
     useEffect(() => {
         const fetchDataAsync = async () => {
+            setLoading(true);
             try {
-                const result = await fetchData(APIUrl, targetAPI? null : {params:{discount :15 }});
+                const result = await fetchData(APIUrl, params);
                 setProducts(result);
             } catch (error) {
-                console.error(error);
+                setError(error.message);
             }
+            setSubTitle(targetAPI || 'working on it')
+            setLoading(false);
         }
-        fetchDataAsync();
-    }, [])
+        fetchDataAsync()
+
+    }, [targetAPI, targetID])
 
     return (
-        <div>
-            <BreadCrumb MainTitle={"Home"} SubTitle={targetAPI} />
-            <Box sx={{ flexGrow: 1, paddingInline: "1rem", marginBlock: "2rem" }} >
-                <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 6, md: 12, lg: 15 }}>
-                    {products.length ? products.map((product) => (
-                        <Grid item xs={2} sm={2} md={3} lg={3} key={product.id}>
-                            <ProductCard product={product} isDetailed={true} />
+        <>
+
+            <BreadCrumb MainTitle={"Home"} SubTitle={subTitle} />
+            <Typography sx={{
+                fontSize: {
+                    xs: "1.5rem",
+                    sm: "1.7rem",
+                    md: "2.125rem"
+                },
+                color: "primary.main",
+                fontWeight: "fontWeightLabelSmall",
+                paddingInline: "1rem",
+                textTransform: "Capitalize",
+            }}>
+                {targetAPI}
+            </Typography>
+
+            {error ? (
+                <Box sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center", height: "50vh",
+                    width: "100%"
+                }}>
+                    <Typography
+                        sx={{
+                            color: "primary.main",
+                            fontSize: {
+                                xs: '1rem',
+                                sm: "2rem"
+                            },
+                            fontWeight: "fontWeightLabelSmall"
+                        }}
+                    >
+                        {error}
+                    </Typography></Box>
+            ) : loading ? (
+                <Box sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center", height: "50vh",
+                    width: "100%"
+                }}>
+                    <Typography
+                        sx={{
+                            color: "primary.main",
+                            fontSize: {
+                                xs: '1rem',
+                                sm: "2rem"
+                            },
+                            fontWeight: "fontWeightLabelSmall"
+                        }}
+                    >
+                        Loading...
+                    </Typography>
+                </Box>
+            ) : products.length === 0 ?
+
+                <Box sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center", height: "20vh",
+                    width: "100%"
+                }}>
+                    <Typography
+                        sx={{
+                            color: "primary.main",
+                            fontSize: {
+                                xs: '1rem',
+                                sm: "2rem"
+                            },
+                            fontWeight: "fontWeightLabelSmall"
+                        }}
+                    >
+                        No Products Found
+                    </Typography>
+                </Box> : (
+
+                    <Box sx={{ flexGrow: 1, paddingInline: "1rem", marginBlock: "2rem" }} >
+                        <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 6, md: 12, lg: 15 }}>
+                            {products.map((product) => (
+                                <Grid item xs={2} sm={2} md={3} lg={3} key={product.id}>
+                                    <ProductCard product={product} isDetailed={true} />
+                                </Grid>
+                            ))}
                         </Grid>
-                    )) : 'No data found'}
-                </Grid>
-            </Box>
-        </div>
+                    </Box>
+                )}
+
+
+        </>
     )
 }
 
-Category.propTypes = {
-    targetURL: PropTypes.string.isRequired,
-}
 
 export default Category;

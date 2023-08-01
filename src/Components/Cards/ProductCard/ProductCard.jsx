@@ -8,19 +8,27 @@ import PropTypes from 'prop-types';
 
 
 export const ProductCard = ({ product, isDetailed }) => {
-    console.log(product)
+    const discountedPrice = (product.price - (product.price * (product.discount / 100))).toFixed(2);
     return (
-        <Card elevation={0}>
-            <Box component={"img"} src={product.imgUrl ? product.imgUrl : product.productImage[0].src} alt={`${product.title ? product.title : product.productImage[0].alt}`} sx={{
+        <Card elevation={0} sx={{
+            height: "100%",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+
+        }}>
+            <Box component={"img"} src={product.productImage[0].src} alt={`${product.productImage[0].alt} logo`} sx={{
                 borderRadius: ".6rem",
                 width: "100%",
-                objectFit: "cover"
-
+                height: "62%",
+                objectFit: "cover",
+                backgroundColor: "accent.main",
+                aspectRatio: '1/1'
             }} />
 
 
             <Box component={"section"} sx={{
-                height: "100%",
+
                 display: "flex", flexDirection: "column"
             }}>
                 <Box sx={{
@@ -33,7 +41,12 @@ export const ProductCard = ({ product, isDetailed }) => {
                     <Typography sx={{
                         fontSize: { xs: ".75rem", sm: "1rem", md: "1rem" },
                         color: "dark.main",
+<<<<<<< HEAD
                         fontWeight: "fontWeightMedium"
+=======
+                        fontWeight: "fontWeightMedium",
+
+>>>>>>> handelaipreq/categorypage
                     }}>{product.title}</Typography>
 
                     <Button sx={{
@@ -59,23 +72,38 @@ export const ProductCard = ({ product, isDetailed }) => {
                         fontSize: { xs: ".75rem", sm: "1rem", md: "1.1rem" },
                         fontWeight: "fontWeightRegular"
                     }}>
-                    {product.brand}
+                    {product.title}
                 </Typography>
 
                 {isDetailed ?
                     <Box sx={{
+<<<<<<< HEAD
                         display: { xs: "none", sm: "flex" },
                         alignItems: "center",
                         gap: "1rem",
+=======
+                        display: "flex",
+                        alignItems: "center",
+                        gap: { xs: "0", sm: "1.3rem" },
+                        justifyContent: {
+                            xs: "space-between",
+                            sm: "normal"
+                        },
+                        flexWrap: "nowrap",
+                        textOverflow: "ellipsis"
+                        , overflow: "hidden"
+                        , whiteSpace: "nowrap"
+>>>>>>> handelaipreq/categorypage
 
                     }}>
                         <Rating value={product.rating} name='Stars' defaultValue={0} precision={.1} size='small' />
                         <Typography color={'primary.main'} sx={{
                             fontSize: {
                                 xs: ".875rem", sm: ".9rem", md: "1.1rem"
-                            },
+                            }, overflow: 'hidden',
+                            textOverflow: 'ellipsis',
                         }}>
-                            {`${product.rating} Ratings`}
+                            {`${45} Ratings`}
                         </Typography>
                     </Box> : null}
 
@@ -89,12 +117,26 @@ export const ProductCard = ({ product, isDetailed }) => {
                         sx={{
                             fontSize: { xs: ".875rem", sm: "1rem", md: "1.1rem" },
                             color: "dark.main",
-                            fontWeight: "fontWeightMedium"
+                            fontWeight: "fontWeightMedium",
+
                         }}>
+<<<<<<< HEAD
                         {`$${product.price}`}
+=======
+                        {`$${discountedPrice}`}
+>>>>>>> handelaipreq/categorypage
                     </Typography>
-                    {isDetailed && product.price.discountPercentage !== 0 ?
-                        <>
+
+                    {product.discount > 0 ?
+                        <Box sx={{
+                            display: "flex",
+                            alignItems: "center",
+                            gap: ".3rem",
+                            flexWrap: "nowrap",
+                            textOverflow: "ellipsis"
+                            , overflow: "hidden"
+                            , whiteSpace: "nowrap"
+                        }}>
                             <Typography sx={{
                                 fontSize: { xs: ".625rem", sm: ".9rem", md: "1rem" },
                                 color: "lowEmphasis.main",
@@ -108,16 +150,15 @@ export const ProductCard = ({ product, isDetailed }) => {
                                 fontSize: { xs: ".625rem", sm: ".9rem", md: "1rem" },
                                 color: "error.main",
                                 fontWeight: "fontWeightRegular",
+                                overflow: 'hidden',
+                                textOverflow: 'ellipsis',
+
                             }}
                             >
                                 {`%${product.discount} OFF`}
                             </Typography>
-                        </>
-
-                        : null
-
+                        </Box> : null
                     }
-
                 </Box>
 
 
@@ -127,8 +168,10 @@ export const ProductCard = ({ product, isDetailed }) => {
         </Card>
     )
 }
+
 ProductCard.propTypes = {
     product: PropTypes.shape({
+<<<<<<< HEAD
         imgUrl: PropTypes.string,
         productImage: PropTypes.array,
         brand: PropTypes.string,
@@ -137,5 +180,28 @@ ProductCard.propTypes = {
         discount: PropTypes.number,
         price: PropTypes.number.isRequired,
     }),
+=======
+        id: PropTypes.number.isRequired,
+        title: PropTypes.string.isRequired,
+        sub_title: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired,
+        price: PropTypes.number.isRequired,
+        quantity: PropTypes.number.isRequired,
+        rating: PropTypes.number.isRequired,
+        createdAt: PropTypes.string.isRequired,
+        updatedAt: PropTypes.string.isRequired,
+        discount: PropTypes.number.isRequired,
+        brand_id: PropTypes.number.isRequired,
+        category_id: PropTypes.number.isRequired,
+        productImage: PropTypes.arrayOf(
+            PropTypes.shape({
+                id: PropTypes.number.isRequired,
+                src: PropTypes.string.isRequired,
+                alt: PropTypes.string.isRequired,
+                product_id: PropTypes.number.isRequired,
+            })
+        ).isRequired,
+    }).isRequired,
+>>>>>>> handelaipreq/categorypage
     isDetailed: PropTypes.bool
 }
