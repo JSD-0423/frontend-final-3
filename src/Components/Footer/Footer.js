@@ -11,7 +11,32 @@ import FacebookIcon from '../FacebookIcon/FacebookIcon';
 import TwitterIcon from '../TwitterIcon/TwitterIcon';
 import YoutubeIcon from '../YoutubeIcon/YoutubeIcon';
 
-const categories = { listMainText: 'Shop By Category', list: ['HandBags', 'Watches', 'Skincare', 'Jewllery', 'Apparels', 'HandBags', 'Watches'] };
+const categories = {
+    listMainText: 'Shop By Category', list: [{
+        "id": 1,
+        "name": "Phones",
+    },
+    {
+        "id": 2,
+        "name": "Laptops",
+    },
+    {
+        "id": 3,
+        "name": "Mobile accessories",
+    },
+    {
+        "id": 4,
+        "name": "Tablets",
+    },
+    {
+        "id": 5,
+        "name": "Shoes",
+    },
+    {
+        "id": 6,
+        "name": "T-shirts",
+    }]
+};
 const products = { listMainText: 'Shop By Product', list: ['Featured', 'Brands', 'Trendy'] };
 const socialMedia = [{ Icon: FacebookIcon, Link: 'www.facebook.com' }, { Icon: InstaIcon, Link: 'www.instagram.com' }, { Icon: TwitterIcon, Link: 'www.twitter.com' }, { Icon: YoutubeIcon, Link: 'www.youtube.com' }]
 
@@ -51,11 +76,11 @@ function Footer({ location, rights, categories, products, socialMedia }) {
                 }} >
                     <SocialMediaLinks socialMedia={socialMedia} />
                     <TextWithIcon text={location} IconComponent={LocationOnOutlinedIcon} width={'100%'} />
-                    <Typography variant="body1"sx={{
+                    <Typography variant="body1" sx={{
                         color: 'lightText.main',
                         fontWeight: 'fontWeightMedium',
                         fontSize: '14px',
-                        textAlign:{xs: 'center', sm: 'right'}
+                        textAlign: { xs: 'center', sm: 'right' }
                     }}>
                         {rights}
                     </Typography>

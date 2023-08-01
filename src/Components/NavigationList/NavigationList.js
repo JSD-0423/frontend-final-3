@@ -4,7 +4,6 @@ import NavigationLink from '../NavigationLink/NavigationLink';
 import PropTypes from 'prop-types';
 
 function NavigationList({ ListItems }) {
-    
     return (
         <List dense={true} sx={{
             p: 0,
@@ -12,7 +11,7 @@ function NavigationList({ ListItems }) {
             marginTop: '5px'
         }}>
             {ListItems.length? ListItems.map((navLink, i) =>{
-                return <NavigationLink key={i} linkText={navLink}/>
+               return typeof (navLink) === 'object' ? <NavigationLink key={i} linkText={navLink.name} linkTo={navLink.id}/> : <NavigationLink key={i} linkText={navLink}/> 
             }): null }
         </List>
     )
