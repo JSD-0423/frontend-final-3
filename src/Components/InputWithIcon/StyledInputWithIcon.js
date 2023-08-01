@@ -3,7 +3,7 @@ import InputBase from '@mui/material/InputBase';
 import { styled } from '@mui/material/styles';
 
 export const StyledInputBase = styled(InputBase)(({ theme }) => ({
-    
+    fontSize:"1rem",
     color: theme.palette.lowEmphasis.main,
     "& .placeholder":{
       color: theme.palette.lowEmphasis.main,
@@ -22,7 +22,6 @@ export const StyledInputBase = styled(InputBase)(({ theme }) => ({
     padding: theme.spacing(0, 2),
     height: '100%',
     position: 'absolute',
-    pointerEvents: 'none',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -33,11 +32,9 @@ export const Search = styled('div')(({ theme }) => ({
     borderRadius: theme.shape.borderRadius,
     backgroundColor: theme.palette.grey.main,
     '&:hover': {
-      backgroundColor:theme.palette.grey.main,
+      backgroundColor:theme.palette.lightText.main,
     },
     marginRight: theme.spacing(2),
-    marginLeft: 0,
-    width: '55px',
     [theme.breakpoints.up('sm')]: {
       marginLeft: theme.spacing(3),
       width: 'auto',
