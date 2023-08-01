@@ -23,7 +23,7 @@ function Home() {
       <NewArrivals />
       <HandPicked headLine="Handpicked Collections" collections={collections} />
       <ShopByBrand linkToValue={''} />
-      <Banner fullWidthCardText={'Limited edition products'} fullWidthCardLinkTo={'/products/limited'} halfWidthCard1Text={'15% off and more!'} halfWidthCard1LinkTo={''} halfWidthCard2Text={'Popular in the community!'} halfWidthCard2LinkTo={'/products/popular'} />
+      <Banner fullWidthCardText={'Limited edition products'} fullWidthCardLinkTo={'/products/limited'} halfWidthCard1Text={'15% off and more!'} halfWidthCard1LinkTo={'/products/discount'} halfWidthCard2Text={'Popular in the community!'} halfWidthCard2LinkTo={'/products/popular'} />
     </div>
   );
 }

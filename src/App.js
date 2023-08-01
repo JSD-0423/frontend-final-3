@@ -21,13 +21,11 @@ const routes = createBrowserRouter(
         <Route path="/" element={<RootLayout/>}>
             <Route path="/" element={<Home/>}/>
             <Route path='/products/:targetAPI' element={<Category/>}/>
-            <Route path='/products/categories/:categoryID' element={<Category/>}/>
             <Route path='/products/:targetAPI/:targetID' element={<Category />} />
-            <Route path='/product/:categoryId' element={<Product/>}/>
+            <Route path='/product/:productId' element={<Product/>}/>
             <Route path='/signup' element={<Signup/>}/>
             <Route path="/signin" element={<SigninPage />} />
             <Route path="*" element={<PageNotFound/>} />
-
         </Route>
     )
 );
