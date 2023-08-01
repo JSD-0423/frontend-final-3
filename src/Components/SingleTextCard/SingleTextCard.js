@@ -20,8 +20,10 @@ function SingleTextCard({ title, imageSrc }) {
             borderRadius: "10px"
         }}>
             <CardMedia
+                component="img"
                 sx={{
-                    height: { xs: "156px", lg: "280px" }
+                    height: { xs: "156px", lg: "280px" },
+                    objectFit: 'contain'
                 }}
                 image={imageSrc}
                 title={title}

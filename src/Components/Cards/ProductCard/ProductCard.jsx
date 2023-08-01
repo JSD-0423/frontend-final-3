@@ -4,12 +4,12 @@ import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import PropTypes from 'prop-types';
-
-
+import { Link } from 'react-router-dom';
 
 export const ProductCard = ({ product, isDetailed }) => {
     const discountedPrice = (product.price - (product.price * (product.discount / 100))).toFixed(2);
     return (
+        <Link to={`/product/${product.id}`} style={{textDecoration: 'none'}}>
         <Card elevation={0} sx={{
             height: "100%",
             display: "flex",
@@ -152,6 +152,7 @@ export const ProductCard = ({ product, isDetailed }) => {
 
 
         </Card>
+        </Link>
     )
 }
 
