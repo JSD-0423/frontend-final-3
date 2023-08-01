@@ -63,11 +63,13 @@ export const Header = ({ pageTitle }) => {
       },
       paddingBlock: {
         xs: ".6rem",
-        md: "0"
+        md: "0.5rem"
       }
     }}>
 
-      <Link to={'/'}> <Box
+      <Box
+        component={Link}
+        to={'/'}
         sx={{
           display: {
             xs: 'none',
@@ -76,7 +78,7 @@ export const Header = ({ pageTitle }) => {
         }}
       >
         <img src="/icons/logo.svg" alt="Coral logo" />
-      </Box></Link>
+      </Box>
 
       <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
         <IconButton
@@ -108,7 +110,7 @@ export const Header = ({ pageTitle }) => {
           }}
         >
           {categories.map((category) => (
-            <MenuItem key={category.id} onClick={handleCloseNavMenu}>
+            <MenuItem key={category.id} onClick={handleCloseNavMenu} component={Link} to={`/products/categories/${category.id}`}>
               <Typography textAlign="center" color={'primary.main'}>{category.name}</Typography>
             </MenuItem>
           ))}
@@ -131,13 +133,23 @@ export const Header = ({ pageTitle }) => {
 
       <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, marginLeft: '1rem' }}>
         {categories.map((category) => (
-          <Link key={category.id} to={`/products/categories/${category.id}`}>
-            <Button
-              sx={{ my: 2, color: 'primary.main', display: 'block', fontSize: '1vw', fontWeight: 'fontWeightMedium', textTransform: "none" }}
-            >
-              {category.name}
-            </Button>
-          </Link>
+
+          <Button
+            key={category.id}
+            component={Link}
+            to={`/products/categories/${category.id}`}
+            sx={{
+              color: 'primary.main',
+              display: 'block',
+              fontSize: '1vw',
+              fontWeight: 'fontWeightMedium',
+              textTransform: "none",
+              paddingBlock: 0
+            }}
+          >
+            {category.name}
+          </Button>
+
         ))}
       </Box>
 
