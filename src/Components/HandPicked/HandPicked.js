@@ -1,14 +1,28 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types';
 import SingleTextCard from '../SingleTextCard/SingleTextCard';
 import { Grid, Box, Typography } from '@mui/material';
+import { fetchData } from '../../Services/network';
 
-HandPicked.propTypes = {
-    headLine: PropTypes.string.isRequired,
-    collections: PropTypes.array.isRequired
-};
+function HandPicked({ headLine }) {
+    const [collections, setCollections] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState('');
 
-function HandPicked({ headLine, collections }) {
+    useEffect(() => {
+        const fetchDataAsync = async () => {
+            setLoading(true);
+            try {
+                const result = await fetchData('https://store-osn9.onrender.com/products/handpicked');
+                setCollections(result);
+            } catch (error) {
+                setError(error.message);
+            }
+            setLoading(false);
+        }
+        fetchDataAsync()
+
+    }, [])
 
     return (
         <Box id="Featured" sx={{
@@ -24,17 +38,62 @@ function HandPicked({ headLine, collections }) {
             }}>
                 {headLine}
             </Typography>
+            {error ? (
+                <Box sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center", height: "20vh",
+                    width: "100%"
+                }}>
+                    <Typography
+                        sx={{
+                            color: "bright.main",
+                            fontSize: {
+                                xs: '1rem',
+                                sm: "2rem"
+                            },
+                            fontWeight: "fontWeightLabelSmall"
+                        }}
+                    >
+                        {error}
+                    </Typography></Box>
+            ) : loading ? (
+                <Box sx={{
+                    display: "flex",
+                    justifyContent: "center", height: "20vh",
+                    alignItems: "center",
+                    width: "100%"
+                }}>
+                    <Typography
+                        sx={{
+                            color: "bright.main",
+                            fontSize: {
+                                xs: '1rem',
+                                sm: "2rem"
+                            },
+                            fontWeight: "fontWeightLabelSmall"
+                        }}
+                    >
+                        Loading...
+                    </Typography>
+                </Box>
+            ) : (
 
-            <Grid container alignItems="center" mb={1} spacing={{ xs: 2, md: 3, lg: 4, xl: 8 }} columns={{ xs: 12, sm: 12, md: 12, lg: 12, xl: 12 }}>
-                {collections ? collections.map(collection => {
-                    return <Grid item xs={6} sm={4} md={3} lg={3} key={collection.id}>
-                        <SingleTextCard title={collection.title} imageSrc={collection.imageSrc} />
-                    </Grid>
-                }) :
-                    <p>no data found</p>}
-            </Grid>
-        </Box>
+                <Grid Grid container alignItems="center" mb={1} spacing={{ xs: 2, md: 3, lg: 4, xl: 8 }} columns={{ xs: 12, sm: 12, md: 12, lg: 12, xl: 12 }}>
+                    {collections.length ? collections.map(collection => {
+                        console.log(collection)
+                        return <Grid item xs={6} sm={4} md={3} lg={3} key={collection.id}>
+                            <SingleTextCard title={collection.title} imageSrc={collection.productImage[0].src} />
+                        </Grid>
+                    }) :
+                        <p>no collections found</p>}
+                </Grid>)}
+        </Box >
     )
 }
+
+HandPicked.propTypes = {
+    headLine: PropTypes.string.isRequired,
+};
 
 export default HandPicked
