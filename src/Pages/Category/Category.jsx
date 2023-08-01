@@ -4,16 +4,18 @@ import { useParams } from "react-router-dom";
 import { Box, Grid, Typography } from '@mui/material';
 import BreadCrumb from '../../Components/BreadCrumb/BreadCrumb';
 import { fetchData } from "../../Services/network";
+import Pagination from '../../Components/Pagination/Pagination';
 
 
 function Category() {
     const { targetAPI, targetID } = useParams();
-    const APIUrl = targetID ? `https://store-osn9.onrender.com/products/${targetAPI}/${targetID}` : targetAPI === 'discount'? 'https://store-osn9.onrender.com/products/' : `https://store-osn9.onrender.com/products/${targetAPI}`;
+    const APIUrl = targetID ? `https://store-osn9.onrender.com/products/${targetAPI}/${targetID}` : targetAPI === 'discount' ? 'https://store-osn9.onrender.com/products/' : `https://store-osn9.onrender.com/products/${targetAPI}`;
     const [subTitle, setSubTitle] = useState("");
     const [products, setProducts] = useState();
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
-    const params = targetAPI === 'discount' ? {'discount' : 15} : null;
+    const params = targetAPI === 'discount' ? { 'discount': 15 } : null;
+    // const [numberOfPages, setNumberOfPages] = useState(1);
 
     useEffect(() => {
         const fetchDataAsync = async () => {
@@ -121,6 +123,11 @@ function Category() {
                     </Box>
                 )}
 
+            <Box sx={{
+                marginLeft: "1rem",
+                marginBottom: "3rem"
+            }}>
+                <Pagination /></Box>
 
         </>
     )
