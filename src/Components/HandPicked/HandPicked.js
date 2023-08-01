@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import SingleTextCard from '../SingleTextCard/SingleTextCard';
 import { Grid, Box, Typography } from '@mui/material';
 import { fetchData } from '../../Services/network';
+import { Link } from 'react-router-dom';
 
 function HandPicked({ headLine }) {
     const [collections, setCollections] = useState([]);
@@ -13,7 +14,7 @@ function HandPicked({ headLine }) {
         const fetchDataAsync = async () => {
             setLoading(true);
             try {
-                const result = await fetchData('https://store-osn9.onrender.com/products/handpicked');
+                const result = await fetchData('/products/handpicked');
                 setCollections(result);
             } catch (error) {
                 setError(error.message);
@@ -80,10 +81,11 @@ function HandPicked({ headLine }) {
             ) : (
 
                 <Grid Grid container alignItems="center" mb={1} spacing={{ xs: 2, md: 3, lg: 4, xl: 8 }} columns={{ xs: 12, sm: 12, md: 12, lg: 12, xl: 12 }}>
-                    {collections.length ? collections.map(collection => {
-                        console.log(collection)
+                    {collections.length ? collections.map((collection) => {
                         return <Grid item xs={6} sm={4} md={3} lg={3} key={collection.id}>
-                            <SingleTextCard title={collection.title} imageSrc={collection.productImage[0].src} />
+                            <Link to={`/product/${collection.id}`} style={{ textDecoration: 'none' }} >
+                                <SingleTextCard title={collection.title} imageSrc={collection.productImage[0].src} />
+                            </Link>
                         </Grid>
                     }) :
                         <p>no collections found</p>}

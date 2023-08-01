@@ -23,8 +23,7 @@ function SingleTextCard({ title, imageSrc }) {
                 component="img"
                 sx={{
                     height: { xs: "156px", lg: "280px" },
-                    backgroundPosition: 'center',
-                    backgroungSize: 'contain'
+                    objectFit: 'contain'
                 }}
                 image={imageSrc}
                 title={title}

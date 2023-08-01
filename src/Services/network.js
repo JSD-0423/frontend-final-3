@@ -5,7 +5,6 @@ const client = axios.create({
     baseURL: baseURL,
 });
 
-
 export const fetchData = async (url) => {
 
 
