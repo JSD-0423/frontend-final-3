@@ -7,44 +7,29 @@ import { fetchData } from "../../Services/network";
 
 
 function Category() {
-    const { targetAPI,categoryID} = useParams();
+    const { targetAPI, targetID } = useParams();
+    const APIUrl = targetID ? `https://store-osn9.onrender.com/products/${targetAPI}/${targetID}` : targetAPI === 'discount'? 'https://store-osn9.onrender.com/products/' : `https://store-osn9.onrender.com/products/${targetAPI}`;
     const [subTitle, setSubTitle] = useState("");
     const [products, setProducts] = useState();
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
+    const params = targetAPI === 'discount' ? {'discount' : 15} : null;
 
     useEffect(() => {
         const fetchDataAsync = async () => {
-            let result;
-            let categories;
             setLoading(true);
             try {
-                if (targetAPI) {
-                    result = await fetchData(`/products/${targetAPI}`);
-
-                }
-
-                if (categoryID) {
-                    categories = await fetchData('/categories')
-                    result = await fetchData(`/products/categories/${categoryID}`);
-                }
-                setSubTitle(targetAPI || categories[categoryID - 1].name)
+                const result = await fetchData(APIUrl, params);
                 setProducts(result);
-
-
-
             } catch (error) {
-
                 setError(error.message);
-
             }
-
+            setSubTitle(targetAPI || 'working on it')
             setLoading(false);
-
         }
         fetchDataAsync()
 
-    }, [categoryID])
+    }, [targetAPI, targetID])
 
     return (
         <>
