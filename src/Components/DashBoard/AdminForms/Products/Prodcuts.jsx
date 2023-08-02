@@ -1,16 +1,30 @@
 import React, {
-  useEffect,
   useState,
 } from "react";
 import axios from 'axios';
-import { useQuery } from 'react-query';
+import { useQuery, useMutation } from 'react-query';
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { TextField, Button, CircularProgress, Box, MenuItem, Select, FormControl, InputLabel } from "@mui/material";
+import { 
+  TextField,
+  Button,
+  CircularProgress,
+  Box,
+  MenuItem,
+  Select,
+  FormControl,
+  InputLabel, 
+  Alert } from "@mui/material";
+import { Add as AddIcon } from '@mui/icons-material';
+import UploadImage from '../../../UploadImage/UploadImage';
+
+import "./style.css";
+
+const UPLOAD_IMAGE = "http://localhost:5000/upload-image";
 
 const ProductForm = () => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [productImage, setProductImage] = useState("");
+  const [profileImageError, setProfileImageError] = useState("");
 
   const { data: brands, isLoading: isBrandLoading } = useQuery(
     `brands`,
@@ -23,89 +37,52 @@ const ProductForm = () => {
     () => axios.get("http://localhost:5000/categories"),
   );
 
-  !isBrandLoading && console.log(brands);
-  !isCategoryLoading && console.log(categories);
+  
+  const { mutate, isLoading: isCreateProductLoading } = useMutation(
+    ({
+      url,
+      productData,
+    }) => axios.post(url, productData),
+    {
+      onSuccess: () => {
+        
+      },
+    },
+  );
 
   const formik = useFormik({
     initialValues: {
       title: "",
-      subTitle: "",
+      sub_title: "",
       description: "",
       price: 0,
       quantity: 0,
       discount: 0,
-      brandId: 0,
-      catgeoryId: 0,
+      brand_id: 0,
+      category_id: 0,
     },
     initialErrors: {
       title: "This field is required",
-      subTitle: "This field is required",
+      sub_title: "This field is required",
       price: "This field is required",
       quantity: "This field is required",
     },
     validationSchema: Yup.object({
       title: Yup.string().required("This field is required"),
-      subTitle: Yup.string().required("This field is required"),
+      sub_title: Yup.string().required("This field is required"),
     }),
     onSubmit: (values) => {
-      // onFinish(values);
       console.log({values})
+      mutate({url: "http://localhost:5000/products", productData: values})
+      resetForm()
     },
   });
 
-  const handleClick = () => {
-    formik.handleSubmit();
-  };
-
-  const handleBlur = (
-    event
-  ) => {
-    formik.handleBlur(event);
-  };
-
-  const handleChange = (event) => {
-    formik.handleChange(event);
-    if (event.target.name === "firstName") {
-      setFirstName(event.target.value);
-    }
-
-    if (event.target.name === "lastName") {
-      setLastName(event.target.value);
-    }
-
-    // check if the first letter is capitalize or not
-    if (firstName) {
-      if (!firstName[0].match(/[A-Z]/)) {
-        setFirstName(
-          (prevValue) =>
-            prevValue["substring"](0, 1)["toUpperCase"]() +
-            prevValue["substring"](1)
-        );
-      }
-    }
-
-    // check if the first letter is capitalize or not
-    if (lastName) {
-      if (!lastName[0].match(/[A-Z]/)) {
-        setLastName(
-          (prevValue) =>
-            prevValue["substring"](0, 1)["toUpperCase"]() +
-            prevValue["substring"](1)
-        );
-      }
-    }
-  };
-
-  const { values } = formik;
-  const { title, subTitle, description, price, quantity, discount, brandId, categoryId } = values;
-
-  useEffect(() => {
-    setFirstName(firstName);
-    setLastName(lastName);
-  }, [firstName, lastName]);
+  const { values, handleChange, handleBlur, handleSubmit, resetForm } = formik;
+  const { title, sub_title, description, price, quantity, discount, brand_id, category_id } = values;
 
   return (
-    <form onSubmit={formik.handleSubmit}>
+    <form onSubmit={handleSubmit}>
       <Box sx={{
         display: "flex",
         flexWrap: "wrap",
@@ -135,21 +112,21 @@ const ProductForm = () => {
         />
         <TextField
           type="text"
-          name="subTitle"
+          name="sub_title"
           id="sub-title"
           onChange={handleChange}
           onBlur={handleBlur}
-          value={subTitle}
+          value={sub_title}
           label="Sub Title"
           variant="filled"
           size="small"
           sx={{
             width: 0.48,
           }}
-          error={formik.touched.subTitle && Boolean(formik.errors.subTitle)}
+          error={formik.touched.sub_title && Boolean(formik.errors.sub_title)}
           helperText={
-            formik.touched.subTitle && Boolean(formik.errors.subTitle) ? (
-              <span>{formik.errors.subTitle}</span>
+            formik.touched.sub_title && Boolean(formik.errors.sub_title) ? (
+              <span>{formik.errors.sub_title}</span>
             ) : null
           }
         />
@@ -157,6 +134,7 @@ const ProductForm = () => {
       <TextField
         type="text"
         multiline
+        minRows={4}
         name="description"
         id="description"
         value={description}
@@ -235,8 +213,9 @@ const ProductForm = () => {
         <InputLabel id="select-brand-label">Brand</InputLabel>
         <Select
           labelId="select-brand-label"
+          name="brand_id"
           id="brand-select"
-          value={brandId}
+          value={brand_id}
           label="Brand"
           onChange={handleChange}
         >
@@ -246,15 +225,17 @@ const ProductForm = () => {
             <Box component="span" sx={{display: "inline-block", width: "2rem"}}>
               <img style={{width: "100%"}} src={img} alt={name} />
             </Box>
-          </MenuItem>))}
+          </MenuItem>
+          ))}
         </Select>
       </FormControl>
       <FormControl fullWidth sx={{marginBlock: "0.5rem"}}>
-        <InputLabel id="select-brand-label">Category</InputLabel>
+        <InputLabel id="select-category-label">Category</InputLabel>
         <Select
           labelId="select-category-label"
+          name="category_id"
           id="category-select"
-          value={categoryId}
+          value={category_id}
           label="Category"
           onChange={handleChange}
         >
@@ -268,16 +249,33 @@ const ProductForm = () => {
           ))}
         </Select>
       </FormControl>
+      <Box width="100%" sx={{display: "flex", flexDirection: "column", alignItems: "center"}}>
+        {profileImageError && <Alert variant='filled' severity='error' sx={{width: "30rem"}}>{profileImageError}</Alert>}
+        {productImage && <Box sx={{width: "15rem"}}><img src={productImage} alt="" style={{objectFit: "cover", width: "15rem"}} /></Box>}
+        <Box className="upload-image">
+          <UploadImage
+            sx={{ }}
+            Icon={
+              <AddIcon style={{ fontSize: "2rem", strokeWidth: "0.1rem" }} />
+            }
+            setImage={setProductImage}
+            setImageError={setProfileImageError}
+            image={profileImageError}
+            url={UPLOAD_IMAGE}
+            maxSize="1"
+          />
+        </Box>
+      </Box>
       <Button
         variant="contained"
         size="large"
         fullWidth
         sx={{ mt: 4, height: 55 }}
         disableElevation
-        onClick={handleClick}
+        onClick={handleSubmit}
         disabled={Object.keys(formik.errors).length > 0}
       >
-        {!isBrandLoading ? (
+        {isCreateProductLoading ? (
           <CircularProgress
             sx={{
               color: "primary.main",

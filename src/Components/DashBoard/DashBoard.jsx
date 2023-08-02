@@ -3,10 +3,9 @@ import PropTypes from 'prop-types';
 
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 
-import { ProductForm } from './AdminForms';
+import { ProductForm, Brands, Categories } from './AdminForms';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -21,7 +20,7 @@ function TabPanel(props) {
     >
       {value === index && (
         <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
+          {children}
         </Box>
       )}
     </div>
@@ -47,7 +46,8 @@ export const AdminDashBord = () => {
       sx={{
         flexGrow: 1,
         bgcolor: "background.paper",
-        display: "flex"
+        display: "flex",
+        minHeight: "340px"
       }}
       component="section"
     >
@@ -57,7 +57,7 @@ export const AdminDashBord = () => {
         value={value}
         onChange={handleChange}
         aria-label="dashboard tabs"
-        sx={{ borderRight: 1, borderColor: "divider" }}
+        sx={{ borderRight: 1, borderColor: "divider", minWidth: "150px" }}
       >
         <Tab label="Users" {...a11yProps(0)} />
         <Tab label="Products" {...a11yProps(1)} />
@@ -71,10 +71,10 @@ export const AdminDashBord = () => {
         <ProductForm />
       </TabPanel>
       <TabPanel value={value} index={2}>
-      Categories
+        <Categories />
       </TabPanel>
       <TabPanel value={value} index={3}>
-      Brands
+        <Brands />
       </TabPanel>
     </Box>
   );
