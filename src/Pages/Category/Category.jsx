@@ -4,11 +4,12 @@ import { useParams } from "react-router-dom";
 import { Box, Grid, Typography } from '@mui/material';
 import BreadCrumb from '../../Components/BreadCrumb/BreadCrumb';
 import { fetchData } from "../../Services/network";
+import Pagination from '../../Components/Pagination/Pagination';
 
 
 function Category() {
     const { targetAPI, targetID } = useParams();
-    const APIUrl = targetID ? `/products/${targetAPI}/${targetID}` : targetAPI === 'discount'? '/products/' : `/products/${targetAPI}`;
+    const APIUrl = targetID ? `/products/${targetAPI}/${targetID}` : targetAPI === 'discount' ? '/products/' : `/products/${targetAPI}`;
     const [subTitle, setSubTitle] = useState("");
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -125,6 +126,11 @@ function Category() {
                     </Box>
                 )}
 
+            <Box sx={{
+                marginLeft: "1rem",
+                marginBottom: "3rem"
+            }}>
+                <Pagination /></Box>
 
         </>
     )
