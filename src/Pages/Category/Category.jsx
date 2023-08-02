@@ -41,7 +41,6 @@ function Category() {
         fetchDataAsync()
 
     }, [targetAPI, targetID, keyword])
-    // console.log(typeof products.categoryName.name)
     return (
         <>
 
