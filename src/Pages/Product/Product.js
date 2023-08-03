@@ -83,9 +83,9 @@ function Product({product}) {
     useEffect(() => {
         const fetchDataAsync = async () => {
             try {
-                const result = await fetchData(`https://store-osn9.onrender.com/products/categories/${categoryId}`);
+                const result = await fetchData(`/products/categories/${categoryId}`);
                 if (count >= result.length) {
-                    setRelatedProducts(result)
+                    setRelatedProducts(result.products)
                 } else {
                     const shuffledProducts = result.sort(() => 0.5 - Math.random());
                     return setRelatedProducts(shuffledProducts.slice(0, count));
