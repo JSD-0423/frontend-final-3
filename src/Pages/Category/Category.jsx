@@ -30,7 +30,11 @@ function Category() {
             setLoading(true);
             try {
                 const result = await fetchData(APIUrl, params);
-                setProducts(result.products);
+                if (targetAPI !== "search") {
+                    setProducts(result.products);
+                }
+                setProducts(result);
+
             } catch (error) {
                 setError(error.message);
             }
