@@ -7,6 +7,7 @@ import { fetchData } from "../../Services/network";
 import { useSearchContext } from '../../hooks/useSearchContext';
 
 
+
 function Category() {
     const { targetAPI, targetID } = useParams();
     const APIUrl = targetID ? `/products/${targetAPI}/${targetID}` : targetAPI === 'discount' ? '/products/' : `/products/${targetAPI}`;
@@ -29,17 +30,20 @@ function Category() {
         const fetchDataAsync = async () => {
             setLoading(true);
             try {
-                const result = await fetchData(APIUrl, params);
-                if (targetAPI !== "search") {
-                    setProducts(result.products);
+
+                const result = await fetchData(APIUrl, params)
+                
+                if (targetAPI === 'search') {
+                    setProducts(result);
+                } else {
+                    setProducts(result.products); 
                 }
-                setProducts(result);
+                setSubTitle(result?.categoryName?.name || result?.brandName?.name || targetAPI)
+
 
             } catch (error) {
                 setError(error.message);
             }
-
-            setSubTitle(products?.categoryName?.name || products?.brandName?.name || targetAPI)
             setLoading(false);
         }
         fetchDataAsync()
@@ -137,8 +141,6 @@ function Category() {
                         </Grid>
                     </Box>
                 )}
-
-
         </>
     )
 }
