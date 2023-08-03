@@ -4,7 +4,9 @@ import { useParams } from "react-router-dom";
 import { Box, Grid, Typography } from '@mui/material';
 import BreadCrumb from '../../Components/BreadCrumb/BreadCrumb';
 import { fetchData } from "../../Services/network";
-import Pagination from '../../Components/Pagination/Pagination';
+import { useSearchContext } from '../../hooks/useSearchContext';
+import { StatusHandler } from '../../Components/Common/StatusHandler/StatusHandler';
+
 
 
 function Category() {
@@ -14,25 +16,39 @@ function Category() {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
-    const params = targetAPI === 'discount' ? {'discount' : 15} : null;
+
+    // eslint-disable-next-line no-unused-vars
+    const { keyword, setKeyword } = useSearchContext();
+
+
+    let params = targetAPI === 'discount'
+        ? { params: { 'discount': 15 } }
+        : targetAPI === 'search' ? { params: { 'keyword': keyword } } : null;
+
 
     useEffect(() => {
         const fetchDataAsync = async () => {
             setLoading(true);
             try {
-                const result = await fetchData(APIUrl, params);
-                setProducts(result);
+
+                const result = await fetchData(APIUrl, params)
+
+                if (targetAPI === 'search') {
+                    setProducts(result);
+                } else {
+                    setProducts(result.products);
+                }
+                setSubTitle(result?.categoryName?.name || result?.brandName?.name || targetAPI)
+
+
             } catch (error) {
                 setError(error.message);
             }
-            
-            setSubTitle(products?.categoryName?.name || products?.brandName?.name || targetAPI)
             setLoading(false);
         }
         fetchDataAsync()
 
-    }, [targetAPI, targetID])
-    // console.log(typeof products.categoryName.name)
+    }, [targetAPI, targetID, keyword])
     return (
         <>
 
@@ -52,65 +68,12 @@ function Category() {
             </Typography>
 
             {error ? (
-                <Box sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center", height: "50vh",
-                    width: "100%"
-                }}>
-                    <Typography
-                        sx={{
-                            color: "primary.main",
-                            fontSize: {
-                                xs: '1rem',
-                                sm: "2rem"
-                            },
-                            fontWeight: "fontWeightLabelSmall"
-                        }}
-                    >
-                        {error}
-                    </Typography></Box>
+                <StatusHandler content={error} height='50vh' />
             ) : loading ? (
-                <Box sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center", height: "50vh",
-                    width: "100%"
-                }}>
-                    <Typography
-                        sx={{
-                            color: "primary.main",
-                            fontSize: {
-                                xs: '1rem',
-                                sm: "2rem"
-                            },
-                            fontWeight: "fontWeightLabelSmall"
-                        }}
-                    >
-                        Loading...
-                    </Typography>
-                </Box>
-            ) : products.products.length === 0 ?
+                <StatusHandler content='Loading...' height='50vh' />
+            ) : products.length === 0 ?
 
-                <Box sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center", height: "20vh",
-                    width: "100%"
-                }}>
-                    <Typography
-                        sx={{
-                            color: "primary.main",
-                            fontSize: {
-                                xs: '1rem',
-                                sm: "2rem"
-                            },
-                            fontWeight: "fontWeightLabelSmall"
-                        }}
-                    >
-                        No Products Found
-                    </Typography>
-                </Box> : (
+                <StatusHandler content='No Products Found !' height='50vh' /> : (
 
                     <Box sx={{ flexGrow: 1, paddingInline: "1rem", marginBlock: "2rem" }} >
                         <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 6, md: 12, lg: 15 }}>
@@ -125,13 +88,6 @@ function Category() {
                         </Grid>
                     </Box>
                 )}
-
-            <Box sx={{
-                marginLeft: "1rem",
-                marginBottom: "3rem"
-            }}>
-                <Pagination /></Box>
-
         </>
     )
 }
