@@ -17,7 +17,7 @@ export const ProductCard = ({ product, isDetailed }) => {
                 justifyContent: "space-between",
 
             }}>
-                <Box component={"img"} src={product.productImage[0].src} alt={`${product.productImage[0].alt} logo`} sx={{
+                <Box component={"img"} src={product.productImage?product.productImage[0].src:product.brand.img} alt={`${product.productImage?product.productImage[0].alt:product.brand.name} logo`} sx={{
                     borderRadius: ".6rem",
                     width: "100%",
                     height: "62%",
