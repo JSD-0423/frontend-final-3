@@ -13,6 +13,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { InputWithIcon } from '../InputWithIcon/InputWithIcon';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { Link } from 'react-router-dom';
+import { useMobileInputContext } from '../../hooks/useMobileSearchContext';
+
 const categories = [{
   "id": 1,
   "name": "Phones",
@@ -43,6 +45,7 @@ const categories = [{
 export const Header = ({ pageTitle }) => {
 
   const [anchorElNav, setAnchorElNav] = useState(null);
+  const { toggleMobileInput } = useMobileInputContext();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -152,33 +155,38 @@ export const Header = ({ pageTitle }) => {
 
         ))}
       </Box>
-
+      
+      <Box sx={{
+        display: {
+          xs: 'none',
+          sm: 'block'
+        }
+      }}>
       <InputWithIcon placeholder={'Search Products or Brands...'} />
-
-      <Box sx={{ display: { xs: 'flex', sm: 'none' } }}>
-        <IconButton size="large" aria-label="show more" aria-haspopup="true" color="primary">
-          <SearchIcon />
-        </IconButton>
       </Box>
 
+      <IconButton size="large" aria-label="show more" aria-haspopup="true" color="primary" onClick={toggleMobileInput} sx={{ display: { xs: 'flex', sm: 'none' } }}>
+        <SearchIcon />
+      </IconButton>
 
-      <Box sx={{ display: { xs: 'flex' } }}>
-        <IconButton size="large" aria-label="show more" aria-haspopup="true" color="primary">
-          <FavoriteBorderIcon />
-        </IconButton>
-      </Box>
 
-      <Box sx={{ display: { xs: 'flex' } }}>
-        <IconButton size="large" aria-label="show more" aria-haspopup="true" >
-          <img src="/icons/profile.svg" alt="Cart" />
-        </IconButton>
-      </Box>
 
-      <Box sx={{ display: { xs: 'flex' } }}>
-        <IconButton size="large" aria-label="show more" aria-haspopup="true" >
-          <img src="/icons/cart.svg" alt="Cart" />
-        </IconButton>
-      </Box>
+
+      <IconButton size="large" aria-label="show more" aria-haspopup="true" color="primary" sx={{ display: { xs: 'flex' } }}>
+        <FavoriteBorderIcon />
+      </IconButton>
+
+
+
+      <IconButton size="large" aria-label="show more" aria-haspopup="true" sx={{ display: { xs: 'flex' } }}>
+        <img src="/icons/profile.svg" alt="Cart" />
+      </IconButton>
+
+
+
+      <IconButton size="large" aria-label="show more" aria-haspopup="true" sx={{ display: { xs: 'flex' } }} >
+        <img src="/icons/cart.svg" alt="Cart" />
+      </IconButton>
 
     </Box>
 
