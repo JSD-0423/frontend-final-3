@@ -13,7 +13,7 @@ import Category from "./Pages/Category/Category";
 import Product from "./Pages/Product/Product";
 import { SigninPage } from "./Pages/Signin";
 import { PageNotFound } from "./Pages/PageNotFound";
-import { AdminDashBoard } from "./Pages/AdminDashBoard";
+import AdminDashBoard from "./Pages/AdminDashBoard/AdminDashboard";
 import { Signup } from './Pages/Signup/Signup';
 import { SearchProvider } from "./context/SearchContext";
 

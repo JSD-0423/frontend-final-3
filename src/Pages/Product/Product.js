@@ -40,16 +40,17 @@ function Product() {
     const { productId } = useParams()
     const [product, setProduct] = useState();
     const [loading, setLoading] = useState(true);
-    const[subTitle,setSubTitle]=useState("");
-    const[subTitleRoute,setSubTitleRoute]=useState("");
+    const [subTitle, setSubTitle] = useState("");
+    const [subTitleRoute, setSubTitleRoute] = useState("");
     const [error, setError] = useState('');
     const [relatedProducts, setRelatedProducts] = useState([]);
-    const [displayText, setDisplayText] = useState('Product Description');
+    const [productDesc, setProductDesc] = useState('');
+    const [displayText, setDisplayText] = useState('');
     const [quantity, setQuantity] = useState(1);
     const buttonRef = useRef(null);
     const count = 5;
     const buttonContent = {
-        'Product Description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Risus scelerisque laoreet tortor cras molestie tincidunt malesuada malesuada. Neque, mauris duis dui id morbi magna. Cras lacus, viverra auctor in turpis est quisque eget tristique.',
+        'Product Description': productDesc,
         'Related Products': relatedProducts,
         'Ratings and Reviews': 'Here are the ratings and reviews.',
     };
@@ -64,10 +65,10 @@ function Product() {
         const fetchDataAsync = async () => {
             setLoading(true);
             try {
-                console.log(productId);
                 const prodcutResponse = await fetchData(`/product/${productId}`);
                 setProduct(prodcutResponse)
-                
+                setDisplayText(prodcutResponse.description);
+                setProductDesc(prodcutResponse.description)
                 const result = await fetchData(`/products/categories/${prodcutResponse.category_id}`);
                 setSubTitleRoute(`/products/categories/${prodcutResponse.category_id}`)
                 setSubTitle(result.categoryName.name)
@@ -76,7 +77,7 @@ function Product() {
                 } else {
                     const shuffledProducts = result.products.sort(() => 0.5 - Math.random());
                     setRelatedProducts(shuffledProducts.slice(0, count));
-                  
+
                 }
             } catch (error) {
                 setError(error.message);
@@ -92,12 +93,12 @@ function Product() {
     return (
         <>
             {error ? (
-                <StatusHandler content={error} height='50vh' /> 
+                <StatusHandler content={error} height='50vh' />
             ) : loading ? (
-                <StatusHandler content="Loading ..." height='50vh' /> 
+                <StatusHandler content="Loading ..." height='50vh' />
             ) : product === null ?
-             <StatusHandler content="No Products Found" height='50vh' /> 
-            :
+                <StatusHandler content="No Products Found" height='50vh' />
+                :
                 <>
                     <BreadCrumb MainTitle={'Home'} SubTitle={subTitle} ProductTitle={product.title} SubTitleRoute={subTitleRoute} />
                     <Box sx={{

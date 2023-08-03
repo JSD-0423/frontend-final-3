@@ -1,7 +1,7 @@
 import { ListItem, ListItemText } from '@mui/material'
 import React from 'react'
 import PropTypes from 'prop-types';
-import { Link as ScrollLink } from 'react-scroll';
+// import { Link as ScrollLink } from 'react-scroll';
 import { Link } from 'react-router-dom';
 
 function NavigationLink({ linkText, linkTo }) {
@@ -18,7 +18,7 @@ function NavigationLink({ linkText, linkTo }) {
                     }}
                 />
             </Link> :
-                <ScrollLink to={linkText} smooth={true} duration={500} offset={-100} style={{ textDecoration: 'none' }}>
+                <Link to={`/#${linkText}`} style={{ textDecoration: 'none', color: 'inherit'}}>
                     <ListItemText
                         primary={linkText}
                         primaryTypographyProps={{
@@ -26,7 +26,7 @@ function NavigationLink({ linkText, linkTo }) {
                             fontSize: '16px'
                         }}
                     />
-                </ScrollLink>}
+                </Link>}
         </ListItem>
     )
 }
