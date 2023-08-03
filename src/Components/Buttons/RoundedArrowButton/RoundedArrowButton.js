@@ -6,9 +6,9 @@ import { PropTypes } from 'prop-types';
 function RoundedArrowButton({ color, backgroundColor, justifyContent }) {
     return (
         <Button aria-label="fingerprint" sx={{
-            mb: 1.5,
             px: 0,
             justifyContent: justifyContent,
+            minWidth: 0,
         }}>
             <EastRoundedIcon sx={{
                 fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem', xl:'3.25rem' },

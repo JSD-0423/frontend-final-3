@@ -1,7 +1,6 @@
 import { ListItem, ListItemText } from '@mui/material'
 import React from 'react'
 import PropTypes from 'prop-types';
-// import { Link as ScrollLink } from 'react-scroll';
 import { Link } from 'react-router-dom';
 
 function NavigationLink({ linkText, linkTo }) {
@@ -14,7 +13,7 @@ function NavigationLink({ linkText, linkTo }) {
                     primary={linkText}
                     primaryTypographyProps={{
                         fontWeight: 'fontWeightMedium',
-                        fontSize: '16px'
+                        fontSize: '16px',
                     }}
                 />
             </Link> :
