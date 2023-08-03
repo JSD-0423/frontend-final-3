@@ -7,6 +7,7 @@ import { fetchData } from "../../Services/network";
 import { useSearchContext } from '../../hooks/useSearchContext';
 import { StatusHandler } from '../../Components/Common/StatusHandler/StatusHandler';
 import { MobileSearchInput } from '../../Components/InputWithIcon/MobileSearchInput';
+import Pagination from '../../Components/Pagination/Pagination';
 
 
 
@@ -68,7 +69,7 @@ function Category() {
     }, [keyword])
     return (
         <>
-            <MobileSearchInput/>
+            <MobileSearchInput />
             <BreadCrumb MainTitle={"Home"} SubTitle={subTitle} />
             <Typography sx={{
                 fontSize: {
@@ -105,6 +106,13 @@ function Category() {
                         </Grid>
                     </Box>
                 )}
+            <Box sx={{
+                marginLeft: "1rem",
+                marginBlock: "2rem"
+            }}>
+                <Pagination />
+
+            </Box>
         </>
     )
 }
