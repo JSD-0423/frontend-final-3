@@ -27,7 +27,7 @@ export default function Stepper({ count, Maxcount, setCount }) {
     return (
         <Box sx={{
             width: "100%",
-            height:"100%",
+            height: "100%",
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
@@ -42,7 +42,7 @@ export default function Stepper({ count, Maxcount, setCount }) {
             </IconButton>
             <Typography
                 sx={{
-
+                    color: count === Maxcount ? theme.status.error : theme.palette.lowEmphasis,
                     fontFamily: theme.typography.fontFamily
                 }} >
                 {count}
