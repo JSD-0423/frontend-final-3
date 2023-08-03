@@ -21,7 +21,6 @@ function Category() {
     const { keyword, setKeyword } = useSearchContext();
 
 
-
     let params = targetAPI === 'discount'
         ? { params: { 'discount': 15 } }
         : targetAPI === 'search' ? { params: { 'keyword': keyword } } : null;
@@ -78,7 +77,7 @@ function Category() {
 
                     <Box sx={{ flexGrow: 1, paddingInline: "1rem", marginBlock: "2rem" }} >
                         <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 6, md: 12, lg: 15 }}>
-                            {products.products ? products.products.map((product, i) => (
+                            {products.products? products.products.map((product, i) => (
                                 <Grid item xs={2} sm={2} md={3} lg={3} key={i}>
                                     <ProductCard product={product} isDetailed={true} />
                                 </Grid>
