@@ -7,28 +7,23 @@ import { useSearchContext } from '../../hooks/useSearchContext';
 
 export const InputWithIcon = ({ placeholder }) => {
 
+  // eslint-disable-next-line no-unused-vars
   const { keyword, setKeyword } = useSearchContext();
 
   const navigate = useNavigate();
 
   const handleChange = (event) => {
     let inputValue = event.target.value;
-    setKeyword(encodeURIComponent(inputValue))
 
-  };
-
-  const handleEnter = (event) => {
-    if (event.key === "Enter" && keyword) {
+    if (event.key === "Enter" && inputValue !== "") {
+      setKeyword(encodeURIComponent(inputValue))
       navigate('/products/search')
     }
-  }
+  };
+
+
   return (
-    <Search sx={{
-      display: {
-        xs: 'none',
-        sm: 'block'
-      }
-    }} >
+    <Search >
       <SearchIconWrapper>
         <SearchIcon color='primary' />
       </SearchIconWrapper>
@@ -37,13 +32,12 @@ export const InputWithIcon = ({ placeholder }) => {
         inputProps={{
           'aria-label': 'search', sx: {
             "&::placeholder": {
-              fontSize: { sm: ".8rem", md: ".9rem", lg: "1rem" }
+              fontSize: { xs: ".75rem", sm: ".8rem", md: ".9rem", lg: "1rem" }
             }
           }
         }}
-        value={keyword}
-        onChange={handleChange}
-        onKeyDown={handleEnter}
+        onKeyDown={handleChange}
+
       />
     </Search>
   )

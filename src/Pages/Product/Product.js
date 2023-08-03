@@ -10,6 +10,7 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import Stepper from '../../Components/Stepper/Stepper';
 import PropTypes from 'prop-types';
 import { StatusHandler } from '../../Components/Common/StatusHandler/StatusHandler';
+import { MobileSearchInput } from '../../Components/InputWithIcon/MobileSearchInput';
 
 
 
@@ -38,7 +39,7 @@ const prodectDetailsButtons = [
 
 function Product() {
     const { productId } = useParams()
-    const [product, setProduct] = useState();
+    const [product, setProduct] = useState(null);
     const [loading, setLoading] = useState(true);
     const [subTitle, setSubTitle] = useState("");
     const [subTitleRoute, setSubTitleRoute] = useState("");
@@ -66,19 +67,20 @@ function Product() {
             setLoading(true);
             try {
                 const prodcutResponse = await fetchData(`/product/${productId}`);
+                if(prodcutResponse){
                 setProduct(prodcutResponse)
                 setDisplayText(prodcutResponse.description);
                 setProductDesc(prodcutResponse.description)
                 const result = await fetchData(`/products/categories/${prodcutResponse.category_id}`);
                 setSubTitleRoute(`/products/categories/${prodcutResponse.category_id}`)
                 setSubTitle(result.categoryName.name)
+                
                 if (count >= result.products.length) {
                     setRelatedProducts(result.products)
                 } else {
                     const shuffledProducts = result.products.sort(() => 0.5 - Math.random());
                     setRelatedProducts(shuffledProducts.slice(0, count));
-
-                }
+                }}
             } catch (error) {
                 setError(error.message);
             }
@@ -96,10 +98,11 @@ function Product() {
                 <StatusHandler content={error} height='50vh' />
             ) : loading ? (
                 <StatusHandler content="Loading ..." height='50vh' />
-            ) : product === null ?
+            ) : product===null?
                 <StatusHandler content="No Products Found" height='50vh' />
                 :
                 <>
+                <MobileSearchInput/>
                     <BreadCrumb MainTitle={'Home'} SubTitle={subTitle} ProductTitle={product.title} SubTitleRoute={subTitleRoute} />
                     <Box sx={{
                         p: 2

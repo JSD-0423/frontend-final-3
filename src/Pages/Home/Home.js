@@ -4,11 +4,13 @@ import NewArrivals from "../../Components/NewArrivals/NewArrivals";
 import ShopByBrand from "../../Components/ShopByBrand/ShopByBrand";
 import HeroSection from "../../Components/HeroSection/HeroSection";
 import Banner from "../../Components/Banner/Banner";
+import { MobileSearchInput } from '../../Components/InputWithIcon/MobileSearchInput';
 
 function Home() {
 
   return (
     <div>
+      <MobileSearchInput/>
       <HeroSection />
       <NewArrivals />
       <HandPicked headLine="Handpicked Collections"/>

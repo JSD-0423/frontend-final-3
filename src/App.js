@@ -16,6 +16,7 @@ import { PageNotFound } from "./Pages/PageNotFound";
 import AdminDashBoard from "./Pages/AdminDashBoard/AdminDashboard";
 import { Signup } from './Pages/Signup/Signup';
 import { SearchProvider } from "./context/SearchContext";
+import { MobileSearchProvider } from "./context/MobileSearchContext";
 
 const routes = createBrowserRouter(
   createRoutesFromElements(
@@ -36,11 +37,13 @@ const routes = createBrowserRouter(
 function App() {
 
     return (
+        <MobileSearchProvider>
         <SearchProvider>
         <ThemeProvider theme={theme}>
             <RouterProvider router={routes} />
         </ThemeProvider>
         </SearchProvider>
+        </MobileSearchProvider>
     );
 }
 
