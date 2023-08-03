@@ -16,7 +16,7 @@ export default function ShopByBrand() {
     const fetchDataAsync = async () => {
       setLoading(true);
       try {
-        const result = await fetchData(`https://store-osn9.onrender.com/brands`);
+        const result = await fetchData(`/brands`);
         setBrands(result);
       } catch (error) {
         setError(error.message);
