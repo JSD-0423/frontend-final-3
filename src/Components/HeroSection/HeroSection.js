@@ -2,6 +2,7 @@ import React from 'react'
 import { Box, Container, Typography } from '@mui/material'
 import BannerCard from '../Cards/BannerCard/BannerCard'
 import AutoSlideContainer from '../AutoSlideContainer/AutoSlideContainer'
+import { Link } from 'react-router-dom'
 
 function HeroSection() {
   return (
@@ -10,6 +11,7 @@ function HeroSection() {
       p: 2
     }}>
       <AutoSlideContainer>
+      <Link to={'/products/categories/3'} style={{textDecoration: 'none'}}>
         <BannerCard background={{ xs: 'url(./Assets/overTheShoulderPinkBagMobile.jpg)', sm: 'url(./Assets/overTheShoulderPinkBagDeskTop.jpg)' }} align='right'>
           <Container sx={{
             textAlign: 'left',
@@ -42,6 +44,8 @@ function HeroSection() {
             </Typography>
           </Container>
         </BannerCard>
+      </Link>
+      <Link to={'/products/categories/3'} style={{textDecoration: 'none'}}>
         <BannerCard background={{ xs: 'url(./Assets/overTheShoulderPinkBagMobile.jpg)', sm: 'url(./Assets/overTheShoulderPinkBagDeskTop.jpg)' }} align='right'>
           <Container sx={{
             textAlign: 'left',
@@ -74,6 +78,7 @@ function HeroSection() {
             </Typography>
           </Container>
         </BannerCard>
+      </Link>
       </AutoSlideContainer>
     </Box >
   )

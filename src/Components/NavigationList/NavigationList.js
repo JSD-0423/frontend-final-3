@@ -8,7 +8,7 @@ function NavigationList({ ListItems }) {
         <List dense={true} sx={{
             p: 0,
             color: 'lightText.main',
-            marginTop: '5px'
+            marginTop: '5px',
         }}>
             {ListItems.length? ListItems.map((navLink, i) =>{
                return typeof (navLink) === 'object' ? <NavigationLink key={i} linkText={navLink.name} linkTo={navLink.id}/> : <NavigationLink key={i} linkText={navLink}/> 

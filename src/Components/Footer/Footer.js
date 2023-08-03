@@ -47,7 +47,7 @@ function Footer({ location, rights, categories, products, socialMedia }) {
             <Grid container spacing={2} px={6} py={3}>
                 <Grid item xs={12} sm={2} sx={{
                     display: { xs: 'flex', sm: 'block' },
-                    alignItems: 'center',
+                    alignItems:{ xs: 'flex-start', sm: 'center'},
                     flexDirection: 'column'
                 }}>
                     <Typography variant="body1" align="left" sx={{
@@ -59,7 +59,7 @@ function Footer({ location, rights, categories, products, socialMedia }) {
                 </Grid>
                 <Grid item xs={12} sm={2} sx={{
                     display: { xs: 'flex', sm: 'block' },
-                    alignItems: 'center',
+                    alignItems:{ xs: 'flex-start', sm: 'center'},
                     flexDirection: 'column'
                 }}>
                     <Typography variant="body1" align="left" sx={{
