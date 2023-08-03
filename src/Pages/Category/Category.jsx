@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { Box, Grid, Typography } from '@mui/material';
 import BreadCrumb from '../../Components/BreadCrumb/BreadCrumb';
 import { fetchData } from "../../Services/network";
+import Pagination from '../../Components/Pagination/Pagination';
 
 
 function Category() {
@@ -124,6 +125,12 @@ function Category() {
                         </Grid>
                     </Box>
                 )}
+                
+            <Box sx={{
+                marginLeft:"1rem",
+                marginBottom:"3rem"
+            }}>
+                <Pagination /></Box>
 
 
         </>
