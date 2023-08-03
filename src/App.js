@@ -13,8 +13,9 @@ import Category from "./Pages/Category/Category";
 import Product from "./Pages/Product/Product";
 import { SigninPage } from "./Pages/Signin";
 import { PageNotFound } from "./Pages/PageNotFound";
-import { Signup } from "./Pages/Signup/Signup";
 import { AdminDashBoard } from "./Pages/AdminDashBoard";
+import { Signup } from './Pages/Signup/Signup';
+import { SearchProvider } from "./context/SearchContext";
 
 const routes = createBrowserRouter(
   createRoutesFromElements(
@@ -33,11 +34,14 @@ const routes = createBrowserRouter(
 );
 
 function App() {
-  return (
-    <ThemeProvider theme={theme}>
-      <RouterProvider router={routes} />
-    </ThemeProvider>
-  );
+
+    return (
+        <SearchProvider>
+        <ThemeProvider theme={theme}>
+            <RouterProvider router={routes} />
+        </ThemeProvider>
+        </SearchProvider>
+    );
 }
 
 export default App;
