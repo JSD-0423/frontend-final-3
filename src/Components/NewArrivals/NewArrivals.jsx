@@ -18,7 +18,7 @@ export default function NewArrivals() {
       setLoading(true)
       try {
         const response = await fetchData('/products/new');
-        setNewArrivals(response)
+        setNewArrivals(response.products)
       } catch (error) {
         setError(error.message);
       }

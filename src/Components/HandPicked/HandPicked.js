@@ -15,7 +15,7 @@ function HandPicked({ headLine }) {
             setLoading(true);
             try {
                 const result = await fetchData('/products/handpicked');
-                setCollections(result);
+                setCollections(result.products);
             } catch (error) {
                 setError(error.message);
             }

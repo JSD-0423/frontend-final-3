@@ -20,7 +20,7 @@ function Category() {
             setLoading(true);
             try {
                 const result = await fetchData(APIUrl, params);
-                setProducts(result);
+                setProducts(result.products);
             } catch (error) {
                 setError(error.message);
             }
