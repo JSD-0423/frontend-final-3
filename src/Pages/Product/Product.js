@@ -40,6 +40,7 @@ function Product() {
     const [product, setProduct] = useState();
     const [loading, setLoading] = useState(true);
     const[subTitle,setSubTitle]=useState("");
+    const[subTitleRoute,setSubTitleRoute]=useState("");
     const [error, setError] = useState('');
     const [relatedProducts, setRelatedProducts] = useState([]);
     const [displayText, setDisplayText] = useState('Product Description');
@@ -67,6 +68,7 @@ function Product() {
                 setProduct(prodcutResponse)
                 
                 const result = await fetchData(`/products/categories/${prodcutResponse.category_id}`);
+                setSubTitleRoute(`/products/categories/${prodcutResponse.category_id}`)
                 setSubTitle(result.categoryName.name)
                 if (count >= result.products.length) {
                     setRelatedProducts(result.products)
@@ -148,7 +150,7 @@ function Product() {
                 </Typography>
             </Box> :
                 <>
-                    <BreadCrumb MainTitle={'Home'} SubTitle={subTitle} ProductTitle={product.title} />
+                    <BreadCrumb MainTitle={'Home'} SubTitle={subTitle} ProductTitle={product.title} SubTitleRoute={subTitleRoute} />
                     <Box sx={{
                         p: 2
                     }}>
