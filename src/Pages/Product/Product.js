@@ -9,6 +9,7 @@ import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import Stepper from '../../Components/Stepper/Stepper';
 import PropTypes from 'prop-types';
+import { StatusHandler } from '../../Components/Common/StatusHandler/StatusHandler';
 
 
 
@@ -91,64 +92,12 @@ function Product() {
     return (
         <>
             {error ? (
-
-                <Box sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center", height: "50vh",
-                    width: "100%"
-                }}>
-                    <Typography
-                        sx={{
-                            color: "primary.main",
-                            fontSize: {
-                                xs: '1rem',
-                                sm: "2rem"
-                            },
-                            fontWeight: "fontWeightLabelSmall"
-                        }}
-                    >
-                        {error}
-                    </Typography></Box>
+                <StatusHandler content={error} height='50vh' /> 
             ) : loading ? (
-                <Box sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center", height: "50vh",
-                    width: "100%"
-                }}>
-                    <Typography
-                        sx={{
-                            color: "primary.main",
-                            fontSize: {
-                                xs: '1rem',
-                                sm: "2rem"
-                            },
-                            fontWeight: "fontWeightLabelSmall"
-                        }}
-                    >
-                        Loading...
-                    </Typography>
-                </Box>
-            ) : product === null ? <Box sx={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center", height: "20vh",
-                width: "100%"
-            }}>
-                <Typography
-                    sx={{
-                        color: "primary.main",
-                        fontSize: {
-                            xs: '1rem',
-                            sm: "2rem"
-                        },
-                        fontWeight: "fontWeightLabelSmall"
-                    }}
-                >
-                    No Products Found
-                </Typography>
-            </Box> :
+                <StatusHandler content="Loading ..." height='50vh' /> 
+            ) : product === null ?
+             <StatusHandler content="No Products Found" height='50vh' /> 
+            :
                 <>
                     <BreadCrumb MainTitle={'Home'} SubTitle={subTitle} ProductTitle={product.title} SubTitleRoute={subTitleRoute} />
                     <Box sx={{

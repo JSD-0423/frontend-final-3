@@ -5,6 +5,7 @@ import { Box, Grid, Typography } from '@mui/material';
 import BreadCrumb from '../../Components/BreadCrumb/BreadCrumb';
 import { fetchData } from "../../Services/network";
 import { useSearchContext } from '../../hooks/useSearchContext';
+import { StatusHandler } from '../../Components/Common/StatusHandler/StatusHandler';
 
 
 
@@ -32,11 +33,11 @@ function Category() {
             try {
 
                 const result = await fetchData(APIUrl, params)
-                
+
                 if (targetAPI === 'search') {
                     setProducts(result);
                 } else {
-                    setProducts(result.products); 
+                    setProducts(result.products);
                 }
                 setSubTitle(result?.categoryName?.name || result?.brandName?.name || targetAPI)
 
@@ -68,65 +69,12 @@ function Category() {
             </Typography>
 
             {error ? (
-                <Box sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center", height: "50vh",
-                    width: "100%"
-                }}>
-                    <Typography
-                        sx={{
-                            color: "primary.main",
-                            fontSize: {
-                                xs: '1rem',
-                                sm: "2rem"
-                            },
-                            fontWeight: "fontWeightLabelSmall"
-                        }}
-                    >
-                        {error}
-                    </Typography></Box>
+                <StatusHandler content={error} height='50vh' />
             ) : loading ? (
-                <Box sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center", height: "50vh",
-                    width: "100%"
-                }}>
-                    <Typography
-                        sx={{
-                            color: "primary.main",
-                            fontSize: {
-                                xs: '1rem',
-                                sm: "2rem"
-                            },
-                            fontWeight: "fontWeightLabelSmall"
-                        }}
-                    >
-                        Loading...
-                    </Typography>
-                </Box>
+                <StatusHandler content='Loading...' height='50vh' />
             ) : products.length === 0 ?
 
-                <Box sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center", height: "20vh",
-                    width: "100%"
-                }}>
-                    <Typography
-                        sx={{
-                            color: "primary.main",
-                            fontSize: {
-                                xs: '1rem',
-                                sm: "2rem"
-                            },
-                            fontWeight: "fontWeightLabelSmall"
-                        }}
-                    >
-                        No Products Found
-                    </Typography>
-                </Box> : (
+                <StatusHandler content='No Products Found !' height='50vh' /> : (
 
                     <Box sx={{ flexGrow: 1, paddingInline: "1rem", marginBlock: "2rem" }} >
                         <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 6, md: 12, lg: 15 }}>

@@ -4,6 +4,7 @@ import SingleTextCard from '../SingleTextCard/SingleTextCard';
 import { Grid, Box, Typography } from '@mui/material';
 import { fetchData } from '../../Services/network';
 import { Link } from 'react-router-dom';
+import { StatusHandler } from '../Common/StatusHandler/StatusHandler';
 
 function HandPicked({ headLine }) {
     const [collections, setCollections] = useState([]);
@@ -40,44 +41,10 @@ function HandPicked({ headLine }) {
                 {headLine}
             </Typography>
             {error ? (
-                <Box sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center", height: "20vh",
-                    width: "100%"
-                }}>
-                    <Typography
-                        sx={{
-                            color: "bright.main",
-                            fontSize: {
-                                xs: '1rem',
-                                sm: "2rem"
-                            },
-                            fontWeight: "fontWeightLabelSmall"
-                        }}
-                    >
-                        {error}
-                    </Typography></Box>
+                <StatusHandler content={error} height='20vh'/>
+
             ) : loading ? (
-                <Box sx={{
-                    display: "flex",
-                    justifyContent: "center", height: "20vh",
-                    alignItems: "center",
-                    width: "100%"
-                }}>
-                    <Typography
-                        sx={{
-                            color: "bright.main",
-                            fontSize: {
-                                xs: '1rem',
-                                sm: "2rem"
-                            },
-                            fontWeight: "fontWeightLabelSmall"
-                        }}
-                    >
-                        Loading...
-                    </Typography>
-                </Box>
+                <StatusHandler content="Loading ..." height='20vh'/>
             ) : (
 
                 <Grid Grid container alignItems="center" mb={1} spacing={{ xs: 2, md: 3, lg: 4, xl: 8 }} columns={{ xs: 12, sm: 12, md: 12, lg: 12, xl: 12 }}>
