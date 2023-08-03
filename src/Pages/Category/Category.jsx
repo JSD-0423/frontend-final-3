@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { Box, Grid, Typography } from '@mui/material';
 import BreadCrumb from '../../Components/BreadCrumb/BreadCrumb';
 import { fetchData } from "../../Services/network";
+import { useSearchContext } from '../../hooks/useSearchContext';
 
 
 
@@ -14,15 +15,32 @@ function Category() {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
-    const params = targetAPI === 'discount' ? { 'discount': 15 } : null;
+
+    // eslint-disable-next-line no-unused-vars
+    const { keyword, setKeyword } = useSearchContext();
+
+
+
+    let params = targetAPI === 'discount'
+        ? { params: { 'discount': 15 } }
+        : targetAPI === 'search' ? { params: { 'keyword': keyword } } : null;
+
 
     useEffect(() => {
         const fetchDataAsync = async () => {
             setLoading(true);
             try {
-                const result = await fetchData(APIUrl, params);
-                setProducts(result.products);
+
+                const result = await fetchData(APIUrl, params)
+                
+                if (targetAPI === 'search') {
+                    setProducts(result);
+                } else {
+                    setProducts(result.products); 
+                }
                 setSubTitle(result?.categoryName?.name || result?.brandName?.name || targetAPI)
+
+
             } catch (error) {
                 setError(error.message);
             }
@@ -30,8 +48,7 @@ function Category() {
         }
         fetchDataAsync()
 
-    }, [targetAPI, targetID])
-    // console.log(typeof products.categoryName.name)
+    }, [targetAPI, targetID, keyword])
     return (
         <>
 
