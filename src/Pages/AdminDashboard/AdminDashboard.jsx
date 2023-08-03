@@ -1,31 +1,19 @@
-import React, {useState} from 'react';
-import { Box, Alert } from '@mui/material';
-import { Add as AddIcon } from '@mui/icons-material';
-import UploadImage from '../../Components/UploadImage/UploadImage';
+import React from "react";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { Box } from '@mui/material'
 
-import "./style.css";
+import { AdminDashBord as AdminDashBordComponent } from "../../Components/DashBoard";
 
-const UPLOAD_IMAGE = "http://localhost:5000/upload-image";
+const queryClient = new QueryClient();
 
-export const AdminDashbord = () => {
-  const [productImage, setProductImage] = useState("");
-  const [profileImageError, setProfileImageError] = useState("");
-
-  return <Box width="100%" sx={{display: "flex", flexDirection: "column", alignItems: "center"}}>
-            {profileImageError && <Alert variant='filled' severity='error' sx={{width: "30rem"}}>{profileImageError}</Alert>}
-            {productImage && <Box sx={{width: "15rem"}}><img src={productImage} alt="" style={{objectFit: "cover", width: "15rem"}} /></Box>}
-            <Box className="upload-image">
-              <UploadImage
-                sx={{ }}
-                Icon={
-                  <AddIcon style={{ fontSize: "2rem", strokeWidth: "0.1rem" }} />
-                }
-                setImage={setProductImage}
-                setImageError={setProfileImageError}
-                image={profileImageError}
-                url={UPLOAD_IMAGE}
-                maxSize="1"
-              />
-            </Box>
-  </Box>
+function AdminDashBoard() {
+  return (
+    <Box width="100%" component="article">
+      <QueryClientProvider client={queryClient}>
+        <AdminDashBordComponent />
+      </QueryClientProvider>
+    </Box>
+  );
 }
+
+export default AdminDashBoard;
