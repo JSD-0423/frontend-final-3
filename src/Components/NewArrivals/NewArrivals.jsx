@@ -1,11 +1,10 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { TitledContainerWithButton } from "../TitledContainerWithButton/TitledContainerWithButton";
 import { CardsCarousel } from "../Cards/CardsCarousel/CardsCarousel";
 import PropTypes from 'prop-types';
 import { ProductCard } from '../Cards/ProductCard/ProductCard';
 import { Box } from '@mui/material';
 import { fetchData } from "../../Services/network";
-import { useEffect, useState } from "react";
 import { StatusHandler } from '../Common/StatusHandler/StatusHandler';
 
 export default function NewArrivals() {
@@ -31,7 +30,6 @@ export default function NewArrivals() {
   }, [])
   return (
     <TitledContainerWithButton containerTitle="New Arrivals" buttonTitle={"View All"} routePath={'/products/new'} >
-
       <CardsCarousel>
         {error ? (
           <StatusHandler content={error} height='20vh' />
@@ -41,6 +39,7 @@ export default function NewArrivals() {
           <StatusHandler content="No Products Found" height='20vh' />
           : newArrivals.map((product) => (<Box key={product.id} sx={
             {
+              objectFit: 'contain',
               flexShrink: 0,
               width: {
                 xs: "40%",
