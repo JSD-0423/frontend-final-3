@@ -13,7 +13,6 @@ import Category from "./Pages/Category/Category";
 import Product from "./Pages/Product/Product";
 import { SigninPage } from "./Pages/Signin";
 import { PageNotFound } from "./Pages/PageNotFound";
-import AdminDashBoard from "./Pages/AdminDashBoard/AdminDashboard";
 import { Signup } from './Pages/Signup/Signup';
 import { SearchProvider } from "./context/SearchContext";
 import { MobileSearchProvider } from "./context/MobileSearchContext";
@@ -28,7 +27,6 @@ const routes = createBrowserRouter(
       <Route path="/product/:productId" element={<Product />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/signin" element={<SigninPage />} />
-      <Route path="/dashboard" element={<AdminDashBoard />} />
       <Route path="*" element={<PageNotFound />} />
     </Route>
   )
