@@ -4,17 +4,17 @@ import { useParams } from "react-router-dom";
 import { Box, Grid, Typography } from '@mui/material';
 import BreadCrumb from '../../Components/BreadCrumb/BreadCrumb';
 import { fetchData } from "../../Services/network";
-import Pagination from '../../Components/Pagination/Pagination';
+
 
 
 function Category() {
     const { targetAPI, targetID } = useParams();
-    const APIUrl = targetID ? `/products/${targetAPI}/${targetID}` : targetAPI === 'discount'? '/products/' : `/products/${targetAPI}`;
+    const APIUrl = targetID ? `/products/${targetAPI}/${targetID}` : targetAPI === 'discount' ? '/products/' : `/products/${targetAPI}`;
     const [subTitle, setSubTitle] = useState("");
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
-    const params = targetAPI === 'discount' ? {'discount' : 15} : null;
+    const params = targetAPI === 'discount' ? { 'discount': 15 } : null;
 
     useEffect(() => {
         const fetchDataAsync = async () => {
@@ -22,11 +22,10 @@ function Category() {
             try {
                 const result = await fetchData(APIUrl, params);
                 setProducts(result.products);
+                setSubTitle(result?.categoryName?.name || result?.brandName?.name || targetAPI)
             } catch (error) {
                 setError(error.message);
             }
-            
-            setSubTitle(products?.categoryName?.name || products?.brandName?.name || targetAPI)
             setLoading(false);
         }
         fetchDataAsync()
@@ -125,14 +124,6 @@ function Category() {
                         </Grid>
                     </Box>
                 )}
-                
-            <Box sx={{
-                marginLeft:"1rem",
-                marginBottom:"3rem"
-            }}>
-                <Pagination /></Box>
-
-
         </>
     )
 }
